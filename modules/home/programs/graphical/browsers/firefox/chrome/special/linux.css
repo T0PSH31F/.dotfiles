@@ -1,0 +1,42 @@
+@supports -moz-bool-pref("userChrome.RegularMenuIcons-Enabled") or
+          -moz-bool-pref("userChrome.FilledMenuIcons-Enabled")
+{
+    :root
+    {
+        --align-menu-icons: -2px -18px;
+    }
+}
+
+@supports -moz-bool-pref("userChrome.Linux.Transparency.Low.Enabled")      or
+          -moz-bool-pref("userChrome.Linux.Transparency.Medium.Enabled")   or
+          -moz-bool-pref("userChrome.Linux.Transparency.High.Enabled")     or
+          -moz-bool-pref("userChrome.Linux.Transparency.VeryHigh.Enabled")
+{
+    :root
+    {
+        @supports -moz-bool-pref("userChrome.Linux.Transparency.Low.Enabled")
+        {
+            --toolbox-transparency: 25%;
+        }
+
+        @supports -moz-bool-pref("userChrome.Linux.Transparency.Medium.Enabled")
+        {
+            --toolbox-transparency: 50%;
+        }
+
+        @supports -moz-bool-pref("userChrome.Linux.Transparency.High.Enabled")
+        {
+            --toolbox-transparency: 75%;
+        }
+
+        @supports -moz-bool-pref("userChrome.Linux.Transparency.VeryHigh.Enabled")
+        {
+            --toolbox-transparency: 100%;
+        }
+
+        &[tabsintitlebar]:not(:-moz-lwtheme, :-moz-window-inactive) #navigator-toolbox
+        {
+            background-color: color-mix(in srgb, ActiveCaption, transparent var(--toolbox-transparency)) !important;
+        }
+    }
+}

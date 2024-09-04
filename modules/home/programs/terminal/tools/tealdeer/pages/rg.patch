@@ -1,0 +1,7 @@
+- Print a regular expression's capture blocks:
+
+`rg {{regular_expression}} -r {{capture_blocks}}`
+
+- Example:
+
+`rg '(hello) (foo)(bar)' -r '$1'`

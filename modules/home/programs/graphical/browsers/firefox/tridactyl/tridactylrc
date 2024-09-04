@@ -1,0 +1,110 @@
+# Theme
+colorscheme everforest-dark
+
+# Open urls
+unbind t
+unbind T
+unbind w
+unbind <C-f>
+
+keybind C H
+keybind c h
+keybind R L
+keybind r l
+keybind S K
+keybind s k
+keybind T J
+keybind t j
+keybind è t
+
+bind é fillcmdline recontain
+bind O fillcmdline tabopen
+bind W tabdetach
+bind ge current_url tabopen
+bind yt tabduplicate
+
+# Git{Hub,Lab} git clone via SSH yank
+bind yg composite js "git clone " + document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/\/?$/,".git") | clipboard yank
+
+# Navigation
+bind C back
+bind R forward
+bind T tabprev
+bind S tabnext
+
+# Mode
+bind , mode ignore
+# bind --mode=ignore <esc> mode normal
+bind --mode=ignore <C-g> mode normal
+
+# Scrolling
+bind t scrollline 2
+bind s scrollline -2
+set smoothscroll = true
+set scrollduration = 10
+
+# Vim search mode
+# Case insensitive only if fully lowercase
+set findcase smart
+
+bind / fillcmdline find
+bind ? fillcmdline find -?
+bind n findnext 1
+bind N findnext -1
+bind <esc> nohlsearch
+bind <C-g> nohlsearch
+
+# detach tabs
+bind gd tabdetach
+bind gD composite tabduplicate; tabdetach
+
+# Tab Groups
+unbind v
+bind V hint -h
+
+bind vA tabgroupabort
+bind vc fillcmdline tabgroupcreate
+bind vv fillcmdline tabgroupswitch
+bind vm fillcmdline tabgroupmove
+bind vR fillcmdline tabgrouprename
+
+bind vl tabgrouplast
+
+bind vm tgroupswitch mail
+bind vM tgroupswitch misc
+bind vp tgroupswitch perso
+bind vs tgroupswitch shopping
+bind vV tgroupswitch video
+
+# Misc
+set hindelay = 100
+set relatedopenpos = last
+set tabopenpos = last
+set modeindicator false
+# go to last accessed tab
+bind l tab #
+
+# Search
+set searchurls.n https://search.nixos.org/packages?query=
+set searchurls.no https://search.nixos.org/options?query=
+set searchurls.nw https://nixos.wiki/index.php?search=
+
+set searchurls.d https://duckduckgo.com/?t=h_&q=
+set searchurls.y https://www.youtube.com/results?search_query=
+
+# Youtube
+# disable hints for invisible elements (no js hinting)
+bindurl youtu((\.be)|(be\.com)) f hint -J
+bindurl youtu((\.be)|(be\.com)) F hint -b -J
+bindurl youtu((\.be)|(be\.com)) tf hint -t -J
+
+# allow to fullscreen a video with 'f'
+unbindurl youtu((\.be)|(be\.com))/watch f
+
+# Only hint search results on Google
+bindurl www.google.com f hint -Jc #search a
+bindurl www.google.com F hint -Jbc #search a
+
+# Only hint search results on DuckDuckGo
+bindurl ^https://duckduckgo.com f hint -Jc [data-testid="result"]
+bindurl ^https://duckduckgo.com F hint -Jbc [data-testid="result"]

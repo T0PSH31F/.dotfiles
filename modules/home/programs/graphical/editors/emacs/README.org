@@ -1,0 +1,37 @@
+#+title: Emacs
+
+* How to install
+1. ensure ~config.${namespace}.apps.emacs.enable~ is set to ~true~, for both ~nixos~ and ~home~ modules
+2. clone ~doom~:
+   #+begin_src bash
+    git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+   #+end_src
+
+3. install ~doom~:
+   #+begin_src bash
+    ~/.config/emacs/bin/doom install
+   #+end_src
+
+4. (opt) ensure there isn't another Emacs configuration folder
+   #+begin_src bash
+    rm -rf ~/.emacs.d
+   #+end_src
+
+5. clone ~doom-conf~:
+   #+begin_src bash
+    git clone https://github.com/CaptainSpof/doom-conf
+   #+end_src
+
+6. sync configuration:
+   #+begin_src bash
+    doom sync -u
+   #+end_src
+
+
+* Known Issues
+
+** Why no ~nix-doom-emacs~?
+
+I decided to go with an "imperative" style configuration for Doom Emacs. Instead of using something like [[https://github.com/nix-community/nix-doom-emacs][nix-doom-emacs]].
+
+The reasoning is that I can't be bothered to wait for a system rebuild to reload my configuration (I might be misunderstanding how nix-doom-emacs works).

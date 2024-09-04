@@ -1,0 +1,12 @@
+local wezterm = require("wezterm");
+local config = wezterm.config_builder();
+config.automatically_reload_config = true;
+config.check_for_updates = false;
+config.enable_scroll_bar = true;
+config.enable_tab_bar = false;
+config.initial_cols = 130;
+config.initial_rows = 35;
+config.scrollback_lines = 5000;
+config.use_fancy_tab_bar = true;
+config.window_close_confirmation = "NeverPrompt";
+return config;

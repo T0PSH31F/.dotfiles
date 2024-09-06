@@ -16,7 +16,6 @@ let
     '';
 
     passthru = { fileName = defaultIconFileName; };
-
   };
   propagatedIcon = pkgs.runCommandNoCC "propagated-icon"
     {
@@ -60,15 +59,7 @@ in
     prompt-init = mkBoolOpt true
       "Whether or not to show an initial message when opening a new shell.";
 
-   # theme.dark =
-   #   mkOpt types.str "Everforest Dark Soft" "Theme to use for the system.";
-   # theme.light =
-   #   mkOpt types.str "Everforest Light Soft" "Theme to use for the system.";
-   # font.term = mkOpt types.str "Hack Nerd Font Mono"
-   #   "Terminal Font to use for the system.";
-
     authorizedKeys = mkOpt (types.listOf types.str) [
-
     ] "The public keys to apply.";
 
     extraGroups =
@@ -80,11 +71,17 @@ in
   config = {
     environment.systemPackages = with pkgs; [
       fd
+      figlet
       fortune
-      lolcat
-      propagatedIcon
       home-manager
       homepage-dashboard
+      krabby
+      lolcat
+      pokeget-rs
+      pokemonsay
+      propagatedIcon
+      solaar
+      toilet
     ];
 
     t0psh31f.home = {
@@ -128,7 +125,6 @@ in
       uid = 1000;
 
       extraGroups = [
-
       ] ++ cfg.extraGroups;
     } // cfg.extraOptions;
   };

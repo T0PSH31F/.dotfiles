@@ -18,7 +18,13 @@ in {
       enable = true;
 
       extensions = with pkgs; [
-        pkgs.gh-dash
+        gh-dash
+        gh-markdown-preview
+        ghdorker
+        github-desktop
+        git-hound
+        nix-prefetch-github
+        octosuite
       ];
     };
   };

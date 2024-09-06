@@ -52,13 +52,21 @@ in
       })
       deploy-rs
       snowfallorg.flake
+      nh
+      nil
+      nix-output-monitor
+      nixd
+      nixel
+      nixfmt-rfc-style
+      nixos-bgrt-plymouth
       nix-index
       nix-init
       nix-prefetch-git
       nix-output-monitor
+      nvd
       # TODO: revive flake-checker
       # flake-checker
-      pinokio
+      statix
     ];
 
     programs.nh = {
@@ -94,11 +102,11 @@ in
             (mapAttrsToList (_name: value: value.key) cfg.extra-substituters);
         };
 
-        gc = {
-          automatic = true;
-          dates = "weekly";
-          options = "--delete-older-than 30d";
-        };
+      #  gc = {
+      #    automatic = true;
+      #    dates = "weekly";
+      #    options = "--delete-older-than 30d";
+      #  };
 
         # flake-utils-plus
         generateRegistryFromInputs = true;

@@ -36,8 +36,7 @@ in
     };
 
     programs.fish.interactiveShellInit = ''
-      if not test -n "$INSIDE_EMACS"
-        eval (${getExe config.programs.zellij.package} setup --generate-auto-start fish | string collect)
+        eval (${getExe config.programs.zellij.package} setup --generate-auto-start zsh | string collect)
       end
     '';
 

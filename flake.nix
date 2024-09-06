@@ -212,9 +212,9 @@ inputs = {
     };
 
   # Plasma-Manager
-    plasma-manager.url = "github:nix-community/plasma-manager";
-    plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
-    plasma-manager.inputs.home-manager.follows = "home-manager";
+  #  plasma-manager.url = "github:nix-community/plasma-manager";
+  #  plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
+  #  plasma-manager.inputs.home-manager.follows = "home-manager";
 
   # Pre Commit Hooks
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
@@ -309,11 +309,10 @@ inputs = {
       ];
 
       systems.modules.home = with inputs; [
-        anyrun.homeManagerModules.anyrun
+        anyrun.homeManagerModules.default
         hyprland.homeManagerModules.default
         nvf.homeManagerModules.default
-        nyaa.homeManagerModule
-        plasma-manager.homeManagerModules.plasma-manager
+        nyaa.homeManagerModules.default
         spicetify-nix.homeManagerModules.default
         walker.homeManagerModules.default
         ];

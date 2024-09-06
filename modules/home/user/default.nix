@@ -23,13 +23,6 @@ in
     gitEmail = mkOpt types.str "wrighterik77@gmail.com" "The email of the user for git.";
     gitUsername = mkOpt types.str "T0PSH31F" "The username for git.";
 
-  #  theme.dark =
-  #    mkOpt types.str "Everforest Dark Soft" "Theme to use for the system.";
-  #  theme.light =
-  #    mkOpt types.str "Everforest Light Soft" "Theme to use for the system.";
-  #  font.term = mkOpt types.str "Hack Nerd Font Mono"
-  #    "Terminal Font to use for the system.";
-
     home = mkOpt (types.nullOr types.str) home-directory "The user's home directory.";
   };
 

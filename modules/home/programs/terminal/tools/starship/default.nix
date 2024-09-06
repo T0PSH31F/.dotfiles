@@ -6,6 +6,7 @@ let
   cfg = config.${namespace}.programs.terminal.tools.starship;
   fish = config.${namespace}.programs.terminal.shells.fish;
   zsh = config.${namespace}.programs.terminal.shells.zsh;
+  bash = config.${namespace}.programs.terminal.shells.bash;
 in
 {
   options.${namespace}.programs.terminal.tools.starship = {
@@ -16,6 +17,7 @@ in
     programs = {
       starship = {
         enable = true;
+        enableBashIntegration = bash.enable;
         enableFishIntegration = fish.enable;
         enableZshIntegration = zsh.enable;
         settings = {

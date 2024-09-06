@@ -16,7 +16,6 @@ in
       amberol
       spotify
       t0psh31f.pocketcasts
-      t0psh31f.yt-music
     ]
     ++ lib.optionals cfg.mixing.enable [
       ardour

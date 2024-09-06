@@ -28,6 +28,18 @@ in
 
     environment.systemPackages = with pkgs; [
       qbittorrent
+      aria2
+      bitmagnet
+      curl
+      etherape
+      ettercap
+      networkmanager
+      networkmanagerapplet
+      persepolis
+      wirelesstools
+      whois
+      wget
+
     ];
   };
 }

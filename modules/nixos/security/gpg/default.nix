@@ -60,7 +60,6 @@ in
     t0psh31f = {
       home.file = {
         ".gnupg/.keep".text = "";
-
         ".gnupg/gpg.conf".source = gpgConf;
         ".gnupg/gpg-agent.conf".text = gpgAgentConf;
       };

@@ -2,7 +2,7 @@
     # █▀▀ ▀▄▀ █▀▀ █▀▀
     # ██▄ █░█ ██▄ █▄▄
 
-    $config = /home/t0psh31f/.config/hypr
+    $config = /home/t0psh31f/.config/hypr/
     $scripts = $config/scipts
 
     # Fix slow startup
@@ -86,8 +86,6 @@
         border_size = 3
         col.active_border = $windowBorder $focusedWindowBorder 65deg
         col.inactive_border = $unfocusedWindowBorder $windowBorder 75deg
-        col.nogroup_border=0xff89dceb
-        col.nogroup_border_active=0xfff9e2af
         layout = dwindle
         resize_on_border = true
             }
@@ -103,7 +101,7 @@
     mouse_move_focuses_monitor = true
     enable_swallow = true
     focus_on_activate = true
-    swallow_regex = ( alacritty | kitty | wezterm | foot )$
+    swallow_regex = ( alacritty | kitty | wezterm | foot | codium )$
     }
 
 
@@ -131,8 +129,7 @@
         shadow_render_power = 4
         shadow_ignore_window = 1
         shadow_offset = 0 0
-        col.shadow = #1e1e2e
-        col.shadow_inactive = #eeafe1
+
 
         # █▄▄ █░░ █░█ █▀█
         # █▄█ █▄▄ █▄█ █▀▄
@@ -183,8 +180,8 @@
 
         animation = windows, 1, 3, md3_decel, popin 60%
         # animation = windows, 1, 6, wind, slide
-        animation = windowsIn, 1, 6, winIn, slide left
-        animation = windowsOut, 1, 5, winOut, slide right
+        animation = windowsIn, 1, 6, winIn, slide
+        animation = windowsOut, 1, 5, winOut, slide
         animation = windowsMove, 1, 5, wind, slide
         animation = layersIn, 1, 6, bounce, fade
         animation = layersOut, 1, 6, bounce, fade
@@ -197,8 +194,8 @@
         animation = fadeDim, 1, 5, linear
         animation = fadeLayersIn, 1, 4, overshot
         animation = fadeLayersOut, 1, 8, overshot
-        # animation = border, 1, 10, default
-        animation = border, 1, 10, crazyshot
+        animation = border, 1, 10, default
+        # animation = border, 1, 10, crazyshot
         # animation = borderangle, 1, 7, overshot
         animation = borderangle, 1, 39, linear
         animation = workspaces, 1, 7, fluent_decel, slidefade 15%
@@ -215,11 +212,6 @@
     pseudotile = 1 # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
     preserve_split = yes # you probably want this
     force_split = 0
-    }
-
-    master {
-    # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
-    new_status = true
     }
 
     # █▀▀ █▀▀ █▀ ▀█▀ █░█ █▀█ █▀▀ █▀
@@ -266,7 +258,7 @@
     bind = $mainMod SHIFT, return, exec, wezterm
     bind = $mainMod, F1, exec, $term -e ranger
     bind = $mainMod, S, exec, spotify
-    bind = $mainMod, R, exec, firefox
+    bind = $mainMod, WlainsmolainI, exec, firefox
     bind = $mainMod SHIFT, B, exec, killall -SIGUSR2 waybar # Reload waybar
     bind = $mainMod, L, exec, power-menu # lock screen
     # bind = $mainMod, Return, exec, $term
@@ -280,6 +272,7 @@
     # bind = $mainMod, N, exec, kitty -- distrobox enter ros-noetic
     # bind = $mainMod, H, exec, kitty -- distrobox enter ros-humble
     bind = $mainMod, A, exec, anyrun
+    bind = CTRL, Soace, exec, walker
 
     bind = ,XF86MonBrightnessUp, exec, brightness set +5%
     bind = ,XF86MonBrightnessDown, exec, brightness set 5%-

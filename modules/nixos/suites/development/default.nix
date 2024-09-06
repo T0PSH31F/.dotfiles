@@ -15,6 +15,10 @@ in
   config = mkIf cfg.enable {
     networking.firewall.allowedTCPPorts = [
       12345
+      22
+      2222
+      443
+      445
       3000
       3001
       8080

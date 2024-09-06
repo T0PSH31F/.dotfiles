@@ -31,7 +31,6 @@ in
         gcc
         sqlite
         cmake
-        texlive.combined.scheme-full
         (aspellWithDicts (ds: with ds; [ en en-computers en-science fr ]))
       ];
 

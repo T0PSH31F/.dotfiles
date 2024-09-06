@@ -80,7 +80,7 @@ in
       ];
       video = [
         {
-          run = ''mpv "$@" '';
+          run = '' "$@" '';
           block = true;
           for = "linux";
         }

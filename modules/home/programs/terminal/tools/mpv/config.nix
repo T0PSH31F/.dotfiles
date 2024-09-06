@@ -1,17 +1,6 @@
 _: {
-  programs.mpv.config = {
+  programs..config = {
     # General
-    profile = "gpu-hq";
-    vo = "gpu-next";
-    gpu-api = "vulkan";
-    vd-lavc-dr = true;
-    spirv-compiler = "auto";
-    vulkan-async-compute = true;
-    vulkan-async-transfer = true;
-    vulkan-queue-count = 1;
-    hwdev = "nvdec";
-    video-sync = "display-resample";
-
     # Demuxer
     cache = true;
     cache-pause = true;

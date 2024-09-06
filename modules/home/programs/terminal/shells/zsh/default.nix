@@ -4,14 +4,12 @@ with lib;
 with lib.${namespace};
 let
   inherit (lib) mkEnableOption mkIf;
-
   starship = config.${namespace}.programs.terminal.tools.starship;
   cfg = config.${namespace}.programs.terminal.shells.zsh;
 in
 {
   options.${namespace}.programs.terminal.shells.zsh = {
     enable = mkEnableOption "Whether or not to enable zsh.";
-
     prompt-init = mkBoolOpt true "Whether or not to show an initial message when opening a new shell.";
   };
 
@@ -27,22 +25,47 @@ in
           starship init zsh | source
         '';
 
-
         initExtra = ''
-          # Fix an issue with tmux.
-          export KEYTIMEOUT=1
-
-          # Use vim bindings.
-          set -o vi
-
-          # Improved vim bindings.
-          source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
         '' + optionalString cfg.prompt-init ''
           ${pkgs.toilet}/bin/toilet -f future "t0psh31f" --gay
         '';
 
         shellAliases = {
           say = "${pkgs.toilet}/bin/toilet -f pagga";
+
+          # nix
+            n = "nix";
+            ns = "nix search --no-update-lock-file nixpkgs";
+            nf = "nix flake";
+            nfu = "nix flake update";
+            nepl = "nix repl '<nixpkgs>'";
+            nr = ''nixos-rebuild --use-remote-sudo --flake "$(pwd)#$(hostname)"'';
+            nR = "nix run nixpkgs#";
+            nS = "nix shell nixpkgs#";
+            nrb = "nr build";
+            nrs = "nr switch";
+            ncl = ''sudo nix-env -p /nix/var/nix/profiles/system --delete-generations +10'';
+            ngc = "nix store gc --debug";
+            ndiff = "nix store diff-closures /nix/var/nix/profiles/(ls -r /nix/var/nix/profiles/ | grep -E 'system\-' | sed -n '2 p') /nix/var/nix/profiles/system";
+            froots = "find -H /nix/var/nix/gcroots/auto -type l | xargs -I {} sh -c 'readlink {}; realpath {}; echo'";
+
+          # rm
+            rmf = "rm -rf";
+
+          # systemd
+            sys = "sudo systemctl";
+            sysu = "systemctl --user";
+            j = "journalctl";
+            jb = "journalctl -b";
+            ju = "journalctl -u";
+
+          # misc
+            q = "exit";
+            mkdir = "mkdir -pv";
+            y = "wl-copy";
+            p = "wl-paste";
+            pp = "pwd";
+
         };
 
         plugins = [{
@@ -58,6 +81,8 @@ in
       };
 
 
+      direnv.enableZshIntegration = true;
+      nix-index.enableZshIntegration = true;
       eza.enableZshIntegration = true;
       fzf.enableZshIntegration = true;
       kitty.shellIntegration.enableZshIntegration = true;

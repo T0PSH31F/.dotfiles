@@ -21,7 +21,7 @@ in
       }
     ];
 
-    environment.systemPackages = with pkgs; [ tailscale ];
+    environment.systemPackages = with pkgs; [ tailscale headscale ];
 
     services.tailscale = enabled;
 

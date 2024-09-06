@@ -17,9 +17,18 @@ in
   config = mkIf cfg.enable {
 
     home.packages = with pkgs; [
-      vlc
-      yt-dlp
+      adl
+      feh
       freetube
+      gifsicle
+      imagemagick
+      imv
+      kodi-wayland
+      miru # Stream anime torrents, real-time with no waiting for downloads
+      mpd
+      popcorntime
+      yt-dlp
+      vlc
     ]
     ++ lib.optionals cfg.jellyfin.enable [
       jellyfin-media-player

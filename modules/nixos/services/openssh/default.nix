@@ -4,11 +4,9 @@ with lib;
 with lib.${namespace};
 let
   cfg = config.${namespace}.services.openssh;
-
   # @TODO(jakehamilton): This is a hold-over from an earlier Snowfall Lib version which used
   # the specialArg `name` to provide the host name.
   name = host;
-
   authorizedKeys = config.${namespace}.user.authorizedKeys;
 
   other-hosts = lib.filterAttrs
@@ -65,7 +63,7 @@ in
         HostKeyAlgorithms +ssh-rsa
 
       Host github.com
-        IdentityFile ~/.ssh/gh@captainspof.pem
+        IdentityFile ~/.ssh/t0psh31f@Luffy
         IdentitiesOnly yes
 
       ${optionalString cfg.manage-other-hosts other-hosts-config}

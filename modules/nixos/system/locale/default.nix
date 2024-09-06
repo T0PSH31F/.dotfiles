@@ -12,7 +12,6 @@ in
 
   config = mkIf cfg.enable {
     i18n.defaultLocale = "en_US.UTF-8";
-
     i18n.extraLocaleSettings = {
       LC_MONETARY = "en_US.UTF-8";
       LC_MEASUREMENT = "en_US.UTF-8";

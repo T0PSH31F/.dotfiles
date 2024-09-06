@@ -12,147 +12,42 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-    # (callPackage pkgs.sddm-lain-wired-theme
-      adbfs-rootless
-      adl
-      ark
-      aria2
       appimage-run
-      ags
-      alacritty
-      anyrun
-      apfsprogs
+      aichat
+      aircrack-ng
       armcord
-      autofs5
-      autopsy
-      bindfs
-      bitmagnet
       bluez
       bluez-alsa
       bluez-tools
-      blueman
       bluetuith
-      blueberry
-      bottom
-      breeze-hacked-cursor-theme
-      btrfs-assistant
-      btrfs-snap
-      btrfs-progs
+      bottom # sys monitor
       btop
-      calibre
-      calibre-web
-      cargo
       caprine-bin
-      cifs-utils
-      commonsCompress
-      curl
-      curlftpfs
-      czkawka
-      davfs2
-      ddrescue
-      dosfstools
-      e2fsprogs
-      etherape
-      ettercap
-      extundelete
-      feh
-      figlet
-      foremost
-      fsarchiver
-      fsautocomplete
       fuzzel
       gedit
-      gitfs
-      gifsicle
-      nautilus
       gpt4all
-      gparted
-      gzip
-      headscale
-      hfsprogs
       htop
-      # hyper
-      imagemagick
       inputs.lobster.packages."x86_64-linux".lobster
-      imv
       kate
-      kodi-wayland
-      krabby
-      lf
-      lolcat
+      lexido
       nextcloud-client
       nextcloud29
       newsboat
-      nh
-      nil
-      nix-output-monitor
-      nixd
-      nixel
-      nixfmt-rfc-style
-      nixos-bgrt-plymouth
-      ntfs3g
-      nvd
-      magicrescue
-      mate.caja
-    # mate.caja-extensions
-      mate.caja-with-extensions
-      miru
-      mtpfs
-      mpd
-      mpv
-      myrescue
-      obexfs
-      openafs
+      mods
       openai-whisper-cpp
-      overskride
-      peazip
-      popcorntime
-      retrofe
-      retroarchFull
-      rio
-      rofi-wayland
-      rofi-bluetooth
-      rofi-menugen
-      rustup
-      sassc
       sbctl
-      simple-mtpfs
-      sirikali
-      solaar
-      socat
-      sshfs
-      statix
+      skypilot
       spotify
-      spaceFM
-      swww
       synapse
       t0psh31f.list-iommu
-      tailscale
+      trackma
       tangram
-      telegram-desktop
-      testdisk
-      toilet
       tor
       tor-browser
-      tree
       patch
-      persepolis
-      pokeget-rs
-      pokemonsay
+      pinokio
       powertop
       inputs.pyprland.packages."x86_64-linux".pyprland
-      ueberzugpp
-      udisks
-      usbimager
-      xarchiver
-      xplorer
-      warp-terminal
-      waybar
-      wezterm
-      wirelesstools
-      winetricks
-      wofi
-      whois
       vivaldi
     ];
 
@@ -198,7 +93,7 @@ services = {
       };
 
       security = {
-        doas = disabled;
+        doas = enabled;
         gpg = disabled;
         keyring.enable = config.${namespace}.desktop.gnome.enable;
       };
@@ -207,8 +102,8 @@ services = {
         avahi = enabled;
         openssh = enabled;
         printing = enabled;
-        remote-desktop = enabled;
-        tailscale = enabled;
+        remote-desktop = disabled;
+        tailscale = disabled;
       };
 
       system = {

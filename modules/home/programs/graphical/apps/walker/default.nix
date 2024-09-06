@@ -19,7 +19,6 @@ in
     runAsService = true;
 
     config = {
-      activation_mode.disabled = true;
       ignore_mouse = true;
       websearch.prefix = "?";
       switcher.prefix = "/";

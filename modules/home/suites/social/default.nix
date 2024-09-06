@@ -12,7 +12,7 @@ in {
     t0psh31f = {
       programs.graphical.instant-messengers = {
         discord = enabled;
-        element = disabled;
+        element = enabled;
         telegram = enabled;
       };
     };

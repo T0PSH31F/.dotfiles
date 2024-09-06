@@ -20,7 +20,6 @@ with lib.${namespace};
 
     apps = { qbittorrent = enabled; };
 
-    desktop.plasma.autoLoginUser = config.${namespace}.user.name;
 
     security.gpg = mkForce disabled;
 

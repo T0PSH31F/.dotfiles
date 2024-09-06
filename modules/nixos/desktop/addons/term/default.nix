@@ -10,5 +10,16 @@ in
     pkg = mkOpt package pkgs.kitty "The terminal to install.";
   };
 
-  config = mkIf cfg.enable { environment.systemPackages = [ cfg.pkg ]; };
+  config = mkIf cfg.enable { environment.systemPackages = [
+    cfg.pkg
+    alacritty
+    foot
+    hyper
+    rio
+    socat
+    ueberzugpp
+    warp-terminal
+    wezterm
+
+    ]; };
 }

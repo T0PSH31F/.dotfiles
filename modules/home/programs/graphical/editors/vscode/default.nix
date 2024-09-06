@@ -14,7 +14,7 @@ in
     programs.vscode = {
       enable = true;
       enableUpdateCheck = true;
-      package = pkgs.vscode;
+      package = pkgs.vscodium;
 
       # TODO: add extensions not packaged with nixpkgs
       extensions = with pkgs.vscode-extensions; [

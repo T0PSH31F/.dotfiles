@@ -14,8 +14,15 @@ in
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       calibre
+      calibre-web
+      ebook_tools
+      getxbook
+      koreader
       libreoffice
-      rnote # FIXME: seems broken
+      mdbook-epub
+      texliveBookPub
+      obsidian
+      zathura
     ]
     ++ lib.optionals cfg.onlyoffice.enable [
       onlyoffice-bin

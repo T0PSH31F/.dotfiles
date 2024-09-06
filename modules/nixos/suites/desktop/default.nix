@@ -1,4 +1,4 @@
-{ config, lib, pkgs, namespace, ... }:
+{ config, lib, pkgs, namespace, inputs, ... }:
 
 with lib;
 with lib.${namespace};
@@ -12,30 +12,14 @@ in
   };
 
   config = mkIf cfg.enable {
-
-  services.greetd = {
-      enable = true;
-      restart = true;
-      package = pkgs.greetd.tuigreet;
-      settings = {
-        default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --time --time-format '%Y-%m-%d %H:%M:%S' --cmd sway";
-          user = "t0psh31f";
-        };
-      };
+    programs = {
+    usbtop.enable = true;
+    adb.enable = true;
     };
 
-  #  services.xserver = {
-  #      enable = true;
-  #    displayManager.sddm = {
-  #                  enable = true;
-  #          wayland.enable = true; # Enable SDDM for Wayland
-  #      };
-  #  };
-    services.flatpak.enable = true;
 
     environment.systemPackages = with pkgs; [
-      inputs.walker.packages.x86_64-linux.default
+      inputs.walker.packages.${pkgs.system}.default
       filelight
       gparted
     ];
@@ -44,17 +28,12 @@ in
       desktop = {
         addons = {
             rofi = enabled;
+            wofi = enabled;
+            waybar = enabled;
         };
         gnome = disabled;
-        plasma = {
-          enable = false;
-          config.enable = false;
-          panels.enable = false;
-          shortcuts.enable = false;
-        };
         hyprland = enabled;
         stylix = enabled;
-      #  addons = { wallpapers = enabled; };
       };
     };
   };

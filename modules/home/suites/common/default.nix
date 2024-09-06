@@ -15,28 +15,19 @@ in
     home.packages = with pkgs; [
       coreutils
       curl
-      duf
-      fd
       file
       findutils
       fzf
-      jq
       killall
-      lf
-      lsof
-      networkmanager
-      networkmanagerapplet
+
+
       protonmail-bridge
       pass-wayland
       pciutils
       planify # todo app
       procs
-      ranger
       thunderbird
-      unrar
-      unzip
       wget
-      xplorer
     ];
 
     t0psh31f = {

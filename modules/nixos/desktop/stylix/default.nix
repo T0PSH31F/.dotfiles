@@ -20,13 +20,13 @@ in {
       enable = true;
       homeManagerIntegration.autoImport = true;
       homeManagerIntegration.followSystem = true;
-      image = ./nix-magenta-pink.png;
+      image = ./oxocarbon.png;
       # base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-      cursor = {
-        package =  pkgs.breeze-hacked-cursor-theme;   # pkgs.rose-pine-cursor
-        name = "breeze-hacked-cursor";                # Breezex-Rosepine-Linux
-        size = 32;
-      };
+    # cursor = {
+    #   package =  pkgs.breeze-hacked-cursor-theme;   # pkgs.rose-pine-cursor
+    #   name = "breeze-hacked-cursor";                # Breezex-Rosepine-Linux
+    #   size = 32;
+    # };
       fonts = {
         emoji = {
           name = "Noto Color Emoji";

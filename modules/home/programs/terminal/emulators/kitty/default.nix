@@ -4,8 +4,6 @@ with lib;
 with lib.${namespace};
 let
   cfg = config.${namespace}.programs.terminal.emulators.kitty;
-# fontTerm = config.${namespace}.user.font.term;
-#  themeDark = config.${namespace}.user.theme.dark;
 in
 {
   options.${namespace}.programs.terminal.emulators.kitty = with types; {
@@ -15,11 +13,9 @@ in
   config = mkIf cfg.enable {
     programs.kitty = {
       enable = true;
-    # font.name = fontTerm;
-    # font.size = 12;
-    #  theme = themeDark;
       shellIntegration.enableFishIntegration = true;
       settings = {
+
         # Cursor
         cursor_shape = "underline";
         cursor_underline_thicness = "2.0";

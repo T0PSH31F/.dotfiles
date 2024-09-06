@@ -9,7 +9,7 @@ let
   inherit (lib) mkIf;
   inherit (lib.${namespace}) mkBoolOpt;
 
-  cfg = config.${namespace}.programs.terminal.tools.mpv;
+  cfg = config.${namespace}.programs.terminal.tools.;
 in
 {
   imports = [ ./config.nix ];
@@ -32,18 +32,18 @@ in
         v = "cycle sub";
       };
       package = pkgs.mpv-unwrapped.wrapper {
-        mpv = pkgs.mpv-unwrapped.override {
+         = pkgs.mpv-unwrapped.override {
           ffmpeg = pkgs.ffmpeg-full;
           lua = pkgs.luajit;
         };
         scripts =
           with pkgs.${namespace};
           [
-            # auto-profiles
-            # better-chapters
-            # boss-key
-            # repl
-            # status-line
+            auto-profiles
+            better-chapters
+            boss-key
+            repl
+            status-line
           ]
           ++ (with pkgs.mpvScripts; [
             acompressor

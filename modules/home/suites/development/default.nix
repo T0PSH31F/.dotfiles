@@ -23,7 +23,7 @@ in
           jq
           onefetch
           postman
-          github-desktop
+          sassc
           tokei # need to know how many lines of poorly written code you typed ? 🦀
           wildcard
         ]

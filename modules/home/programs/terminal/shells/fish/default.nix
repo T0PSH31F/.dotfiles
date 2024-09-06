@@ -2,7 +2,6 @@
 
 let
   inherit (lib) mkEnableOption mkIf;
-
   cfg = config.${namespace}.programs.terminal.shells.fish;
   starship = config.${namespace}.programs.terminal.tools.starship;
 in

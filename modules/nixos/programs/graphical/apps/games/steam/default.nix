@@ -23,7 +23,10 @@ in
     hardware.steam-hardware.enable = true;
 
     environment.systemPackages = with pkgs; [
+      retrofe
+      retroarchFull
       steamtinkerlaunch
+      winetricks
     ];
 
     environment.sessionVariables = {

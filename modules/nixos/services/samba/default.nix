@@ -24,7 +24,6 @@ let
       comment = mkOpt str name "An optional comment.";
       read-only = mkBoolOpt false "Whether the share should be read only.";
       only-owner-editable = mkBoolOpt false "Whether the share is only writable by the system owner (t0psh31f.user.name).";
-
       extra-config = mkOpt attrs { } "Extra configuration options for the share.";
     };
   });
@@ -34,7 +33,6 @@ in
     enable = mkEnableOption "Samba";
     workgroup = mkOpt str "WORKGROUP" "The workgroup to use.";
     browseable = mkBoolOpt true "Whether the shares are browseable.";
-
     shares = mkOpt (attrsOf shares-submodule) { } "The shares to serve.";
   };
 

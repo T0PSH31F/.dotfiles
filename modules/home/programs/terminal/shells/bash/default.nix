@@ -5,13 +5,15 @@
   ...
 }:
 with lib;
+with lib.${namespace};
 let
-  cfg = config.shells.${namespace}.bash;
-  profiles = config.profiles.${namespace};
+  inherit (lib) mkEnableOption mkIf;
+  cfg = config.${namespace}.programs.terminal.shells.bash;
 in
 {
-  options.shells.${namespace}.bash = {
-    enable = mkEnableOption "Bash profile";
+  options.${namespace}.programs.terminal.shells.bash = {
+    enable = mkEnableOption "Whether or not to enable bash.";
+    prompt-init = mkBoolOpt true "Whether or not to show an initial message when opening a new shell.";
   };
 
   config = mkIf cfg.enable {
@@ -25,17 +27,16 @@ in
           "ignorespace"
           "erasedups"
         ];
-        initExtra = "source $HOME/.shell-init";
-      };
+        };
 
-    # atuin.enableBashIntegration = true;
-      eza.enableBashIntegration = true;
+    # eza.enableBashIntegration = true;
       fzf.enableBashIntegration = true;
       kitty.shellIntegration.enableBashIntegration = true;
-    #  oh-my-posh.enableBashIntegration = true;
+    # oh-my-posh.enableBashIntegration = true;
       starship.enableBashIntegration = true;
       wezterm.enableBashIntegration = true;
-    #  zoxide.enableBashIntegration = true;
+      zoxide.enableBashIntegration = true;
     };
   };
 }
+

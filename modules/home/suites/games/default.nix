@@ -2,7 +2,7 @@
 let
   inherit (lib) mkIf;
   inherit (lib.${namespace}) mkBoolOpt enabled;
-#  aagl-gtk-on-nix = import (builtins.fetchTarball { url = "https://github.com/ezKEa/aagl-gtk-on-nix/archive/main.tar.gz"; sha256 = "sha256:0zba0vpxr0d4lfx2vlf2k5hn4m2v8ncxl1pz4ryy3m5fxzy3c96h";});
+  aagl-gtk-on-nix = import (builtins.fetchTarball { url = "https://github.com/ezKEa/aagl-gtk-on-nix/archive/main.tar.gz"; sha256 = "sha256:0zba0vpxr0d4lfx2vlf2k5hn4m2v8ncxl1pz4ryy3m5fxzy3c96h";});
   cfg = config.${namespace}.suites.games;
 in
 {

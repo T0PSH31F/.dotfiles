@@ -33,10 +33,6 @@ in
   options.${namespace}.desktop.gnome = with types; {
     enable =
       mkBoolOpt false "Whether or not to use Gnome as the desktop environment.";
-  # wallpaper = {
-  #   light = mkOpt (oneOf [ str package ]) pkgs.t0psh31f.wallpapers.nord-rainbow-light-nix "The light wallpaper to use.";
-  #   dark = mkOpt (oneOf [ str package ]) pkgs.t0psh31f.wallpapers.nord-rainbow-dark-nix "The dark wallpaper to use.";
-  # };
     color-scheme = mkOpt (enum [ "light" "dark" ]) "dark" "The color scheme to use.";
     wayland = mkBoolOpt true "Whether or not to use Wayland.";
     suspend =
@@ -49,7 +45,6 @@ in
     t0psh31f.system.xkb.enable = true;
     t0psh31f.desktop.addons = {
       gtk = enabled;
-      # wallpapers = enabled;
       electron-support = enabled;
     };
 

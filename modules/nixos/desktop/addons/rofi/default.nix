@@ -11,7 +11,12 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [ rofi ];
+    environment.systemPackages = with pkgs; [
+    rofi
+    rofi-wayland
+    rofi-bluetooth
+    rofi-menugen
+      ];
 
     t0psh31f.home.configFile."rofi/config.rasi".source = ./config.rasi;
   };

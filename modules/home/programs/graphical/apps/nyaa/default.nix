@@ -10,7 +10,7 @@ in
   imports = [inputs.nyaa.homeManagerModule];
 
   options.${namespace}.programs.graphical.apps.nyaa = {
-    enable = mkBoolOpt true "Whether or not to enable nyaa";
+    enable = mkBoolOpt false "Whether or not to enable nyaa";
   };
 
   config = mkIf cfg.enable {

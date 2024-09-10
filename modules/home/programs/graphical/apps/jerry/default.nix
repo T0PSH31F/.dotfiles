@@ -7,10 +7,10 @@ let
   cfg = config.${namespace}.programs.graphical.apps.jerry;
 in
 {
-  imports = [inputs.jerry.homeManagerModules.default];
+  imports = [ inputs.jerry.homeManagerModules.jerry ];
 
   options.${namespace}.programs.graphical.apps.jerry = {
-    enable = mkBoolOpt true "Whether or not to enable jerry";
+    enable = mkBoolOpt false "Whether or not to enable jerry";
   };
 
   config = mkIf cfg.enable {

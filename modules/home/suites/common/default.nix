@@ -14,20 +14,15 @@ in
 
     home.packages = with pkgs; [
       coreutils
-      curl
       file
       findutils
-      fzf
       killall
-
-
       protonmail-bridge
       pass-wayland
       pciutils
       planify # todo app
       procs
       thunderbird
-      wget
     ];
 
     t0psh31f = {
@@ -36,9 +31,9 @@ in
       graphical = {
         apps = {
               anyrun = enabled;
-            # jerry = enabled;
-            #  nyaa = enabled;
-            # walker = enabled;
+               jerry = enabled;
+                nyaa = enabled;
+              walker = enabled;
                 };
         browsers = {
             brave = enabled;
@@ -58,7 +53,7 @@ in
           };
 
           shells = {
-          #  bash = enabled;
+            bash = enabled;
             fish = enabled;
             zsh = enabled;
           };

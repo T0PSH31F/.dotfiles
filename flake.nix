@@ -50,9 +50,11 @@ inputs = {
     anyrun.url = "github:anyrun-org/anyrun";
     anyrun.inputs.nixpkgs.follows = "nixpkgs";
     anyrun-nixos-options.url = "github:n3oney/anyrun-nixos-options";
+    anyrun-nixos-options.inputs.nixpkgs.follows = "nixpkgs";
 
   # AGS - a customizable and extensible shell
     ags.url = "github:Aylur/ags"; #"github:vaxerski/ags/fix-hl-xd";
+    ags.inputs.nixpkgs.follows = "nixpkgs";
 
   # Arion - Docker Containers
     arion.url = "github:hercules-ci/arion";
@@ -156,6 +158,7 @@ inputs = {
 
   # Jerry - Dem Anime's tho...
     jerry.url = "github:justchokingaround/jerry";
+    jerry.inputs.nixpkgs.follows = "nixpkgs";
 
   # Lobster - Dem movies tho shhhh....
     lobster.url = "github:justchokingaround/lobster";
@@ -180,6 +183,7 @@ inputs = {
 
   # Nix-helper
     nh.url = "github:viperML/nh";
+    nh.inputs.nixpkgs.follows = "nixpkgs";
 
   # Nix-ld - Run unpatched dynamically compiled binaries
     nix-ld.url = "github:Mic92/nix-ld";
@@ -194,7 +198,7 @@ inputs = {
     nvf.inputs.nixpkgs.follows = "nixpkgs";
 
   # Neovim Nixvim configuration by redyf
-  #  Neve.url = "github:redyf/Neve";
+    neve.url = "github:redyf/neve";
 
   # Nuenv
     nuenv.url = "github:DeterminateSystems/nuenv";
@@ -231,7 +235,12 @@ inputs = {
     };
 
   # Stylix - Uniform Nix themeing and ricing.
-    stylix.url = "github:danth/stylix";
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  # Base-16 Nix Themeing Conversion
+    nix-colors.url = "github:misterio77/nix-colors";
 
   # Spicetify - Spotify theming and extension's
     spicetify-nix = {
@@ -255,6 +264,7 @@ inputs = {
   # Wezterm - GPU-accelerated TTY(Terminal) emulator
     wezterm = {
       url = "github:wez/wezterm?dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
   # Vault Integration
@@ -267,6 +277,14 @@ inputs = {
   outputs =
     inputs:
     let
+  inherit (inputs) hyprland nixpkgs;
+      supportedSystems = [ "x86_64-linux" "x86_64-darwin" "aarch64-linux" "aarch64-darwin" ];
+
+      # Helper function to generate an attrset '{ x86_64-linux = f "x86_64-linux"; ... }'.
+      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+
+      # Nixpkgs instantiated for supported system types.
+    nixpkgsFor = forAllSystems (system: import nixpkgs { inherit system; });
       lib = inputs.snowfall-lib.mkLib {
         inherit inputs;
         src = ./.;
@@ -284,12 +302,20 @@ inputs = {
     lib.mkFlake {
       channels-config = {
         allowUnfree = true;
+        allowUnfreePredicate = pkg: true;
+        nixpkgs.configf.packageOverrides = pkgs: {
+          # integrates nur within Home-Manager
+          nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
+            inherit pkgs;
+            };
+
+              # sha256 = "sha256:1b9ffky4lzwlpq7g9nnyb3zdyq1mz7vd383xd8ji0jyyx3y0vsad";
+        };
       };
 
       overlays = with inputs; [
         snowfall-flake.overlays.default
         nuenv.overlays.default
-        nur.overlay
         emacs-overlay.overlays.default
       ];
 
@@ -300,9 +326,11 @@ inputs = {
       systems.modules.nixos = with inputs; [
         aagl.nixosModules.default
         arion.nixosModules.arion
-        disko.nixosModules.disko
+        disko.nixosModules.default
       #  dedsec-grub-theme.nixosModule
         home-manager.nixosModules.home-manager
+        hyprland.nixosModules.default
+        nur.nixosModules.nur
         nvf.nixosModules.default
         vault-service.nixosModules.nixos-vault-service
         stylix.nixosModules.stylix
@@ -311,6 +339,9 @@ inputs = {
       systems.modules.home = with inputs; [
         anyrun.homeManagerModules.default
         hyprland.homeManagerModules.default
+        jerry.homeManagerModules.default
+        lobster.homeManagerModules.default
+        neve.homeManagerModules.default
         nvf.homeManagerModules.default
         nyaa.homeManagerModules.default
         spicetify-nix.homeManagerModules.default
@@ -319,11 +350,30 @@ inputs = {
 
       deploy = lib.mkDeploy {inherit (inputs) self;};
 
+      templates = import ./templates { };
+
+      devShells = forAllSystems (system:
+        let
+          pkgs = nixpkgsFor.${system};
+        in
+        {
+          default = pkgs.mkShell {
+            buildInputs = with pkgs; [
+              git
+              nh
+              nixpkgs-fmt
+              statix
+            ];
+          };
+        });
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+    };
+
     #  checks =
     #    builtins.mapAttrs
     #    (system: deploy-lib:
     #      deploy-lib.deployChecks inputs.self.deploy)
     #    inputs.deploy-rs.lib;
 
-    };
-}
+    }
+

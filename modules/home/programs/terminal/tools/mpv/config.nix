@@ -1,5 +1,5 @@
 _: {
-  programs..config = {
+  programs.mpv.config = {
     # General
     # Demuxer
     cache = true;

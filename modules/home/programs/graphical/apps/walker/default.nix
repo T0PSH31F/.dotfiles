@@ -10,7 +10,7 @@ in
   imports = [inputs.walker.homeManagerModules.default];
 
   options.${namespace}.programs.graphical.apps.walker = {
-    enable = mkBoolOpt true "Whether or not to enable walker";
+    enable = mkBoolOpt false "Whether or not to enable walker";
   };
 
   config = mkIf cfg.enable {

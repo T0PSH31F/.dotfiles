@@ -93,7 +93,7 @@ services = {
       };
 
       security = {
-        doas = enabled;
+        doas = disabled;
         gpg = disabled;
         keyring.enable = config.${namespace}.desktop.gnome.enable;
       };

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, namespace, ... }:
+{ config, lib, pkgs, namespace, inputs, ... }:
 
 let
   inherit (lib) types mkIf mkMerge optionalAttrs;
@@ -125,28 +125,28 @@ in
 
         id = 0;
 
-        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-          auto-tab-discard
-          bitwarden
-          consent-o-matic
-          darkreader
-          enhancer-for-youtube
-          firefox-color
-          french-language-pack
-          languagetool
-          org-capture # TODO: setup
-          plasma-integration
-          reddit-enhancement-suite
-          refined-github
-          sidebery
-          simple-tab-groups
-          sponsorblock
-          stylus
-          tabcenter-reborn
-          tridactyl
-          ublock-origin
-          user-agent-string-switcher
-        ];
+      #  extensions = with pkgs; [
+      #    auto-tab-discard
+      #    bitwarden
+      #    consent-o-matic
+      #    darkreader
+      #    enhancer-for-youtube
+      #    firefox-color
+      #    french-language-pack
+      #    languagetool
+      #    org-capture # TODO: setup
+      #    plasma-integration
+      #    reddit-enhancement-suite
+      #    refined-github
+      #    sidebery
+      #    simple-tab-groups
+      #    sponsorblock
+      #    stylus
+      #    tabcenter-reborn
+      #    tridactyl
+      #    ublock-origin
+      #    user-agent-string-switcher
+      #  ];
 
         search = {
           default = "Google";

@@ -20,13 +20,13 @@ in {
       enable = true;
       homeManagerIntegration.autoImport = true;
       homeManagerIntegration.followSystem = true;
-      image = ./oxocarbon.png;
+      image = ./reaper2.png;
       # base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-    # cursor = {
-    #   package =  pkgs.breeze-hacked-cursor-theme;   # pkgs.rose-pine-cursor
-    #   name = "breeze-hacked-cursor";                # Breezex-Rosepine-Linux
-    #   size = 32;
-    # };
+      cursor = {
+        package =  pkgs.breeze-hacked-cursor-theme;   # pkgs.rose-pine-cursor
+        name = "breeze-hacked-cursor";                # Breezex-Rosepine-Linux
+        size = 32;
+      };
       fonts = {
         emoji = {
           name = "Noto Color Emoji";
@@ -52,10 +52,10 @@ in {
                   };
       };
       opacity = {
-        desktop = 0.9;
-        applications = 0.9;
-        terminal = 0.75;
-        popups = 0.7;
+        desktop = 0.95;
+        applications = 1.0;
+        terminal = 0.25;
+        popups = 1.0;
       };
       polarity = "dark";
       targets = {

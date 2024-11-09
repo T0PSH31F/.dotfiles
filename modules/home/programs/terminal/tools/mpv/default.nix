@@ -40,10 +40,10 @@ in
           with pkgs.${namespace};
           [
         #    auto-profiles
-        #    better-chapters
+        #   better-chapters
         #    boss-key
         #    repl
-        #    status-line
+        #   status-line
           ]
           ++ (with pkgs.mpvScripts; [
             acompressor

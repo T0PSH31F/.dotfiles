@@ -21,7 +21,7 @@ with lib.${namespace};
 
     home-manager = {
       # enables backing up existing files instead of erroring if conflicts exist
-      backupFileExtension = "old";
+      backupFileExtension = "backup";
 
       useUserPackages = true;
       useGlobalPkgs = true;

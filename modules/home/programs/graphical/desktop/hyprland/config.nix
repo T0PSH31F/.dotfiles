@@ -6,26 +6,23 @@
     $scripts = $config/scipts
 
     # Fix slow startup
-    exec-once = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+ #  exec-once = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
     exec-once = dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
     # Hyprpm for imperitvely installing, troubleshooting, and configuring hyprland specific plugins
     exec-once = hyprpm reload -n
-
-    exec-once = pkill waybar
-    exec-once = $scripts/Launch_waybar &
-    exec-once = $scripts/tools/dynamic &
-    exec-once = $scripts/flicker &
-
-    exec-once = dunst
-    exec-once = walker --gapplication-service
-    exec-once = swww kill; swww init
-    exec-once = blueman-applet
+    exec-once = ags &
+    exec-once = clipse -listen &
+    exec-once = hyprpanel &
+    exec-once = udiskie &
+    exec-once = walker --gapplication-service &
+  # exec-once = swww kill; swww init &
+    exec-once = blueman-applet &
     exec-once = nm-applet --indicator # Systray app for /Wifi
     exec-once = swayidle -w timeout 9500 'swaylock -f' timeout 16000 'pidof java || systemctl suspend' before-sleep 'swaylock -f'
-    exec-once = wl-clipboard-history -t
-    exec-once = wl-paste --type text --watch cliphist store
-    exec-once = wl-paste --type image --watch cliphist store
+# exec-once = wl-clipboard-history -t
+# exec-once = wl-paste --type text --watch cliphist store
+# exec-once = wl-paste --type image --watch cliphist store
 #   exec-once = nextcloud --background
 
 
@@ -113,21 +110,21 @@
         # █▀█ █▀█ █░█ █▄░█ █▀▄   █▀▀ █▀█ █▀█ █▄░█ █▀▀ █▀█
         # █▀▄ █▄█ █▄█ █░▀█ █▄▀   █▄▄ █▄█ █▀▄ █░▀█ ██▄ █▀▄
 
-        rounding = 11
+        rounding = 20
 
         # █▀█ █▀█ ▄▀█ █▀▀ █ ▀█▀ █▄█
         # █▄█ █▀▀ █▀█ █▄▄ █ ░█░ ░█░
 
         active_opacity = 0.95
-        inactive_opacity = 0.7
+        inactive_opacity = 0.9
 
         # █▀ █░█ ▄▀█ █▀▄ █▀█ █░█░█
         # ▄█ █▀█ █▀█ █▄▀ █▄█ ▀▄▀▄▀
+
         drop_shadow = true
         shadow_ignore_window = false
         shadow_range = 100
         shadow_render_power = 4
-        shadow_ignore_window = 1
         shadow_offset = 0 0
 
 
@@ -136,8 +133,8 @@
 
         blur {
             enabled = 1
-            size = 8
-            passes = 2
+            size = 3
+            passes = 6
             new_optimizations = true
             xray = true
             noise = 0.0117
@@ -252,13 +249,15 @@
     # █▀▄▀█ █ █▀ █▀▀
     # █░▀░█ █ ▄█ █▄▄
 
-    bind = SUPER,t,exec,kitty --start-as=fullscreen -o 'font_size=25' --title all_is_kitty
-    bind = SUPER,RETURN,exec,kitty --title fly_is_kitty
-    # bind = $mainMod SHIFT, T, exec, alacritty
+    bind = SUPER, t, exec, kitty --start-as=fullscreen -o 'font_size=25' --title all_is_kitty
+    bind = SUPER, RETURN, exec, kitty --title fly_is_kitty
+    bind = SUPER, H, exec, alacritty --class clipse -e clipse
+    bind = $mainMod, Z, exec, anyrun
+    bind = $mainMod SHIFT, T, exec, alacritty
     bind = $mainMod SHIFT, return, exec, wezterm
     bind = $mainMod, F1, exec, $term -e ranger
     bind = $mainMod, S, exec, spotify
-    bind = $mainMod, WlainsmolainI, exec, firefox
+    bind = $mainMod, W, exec, firefox
     bind = $mainMod SHIFT, B, exec, killall -SIGUSR2 waybar # Reload waybar
     bind = $mainMod, L, exec, power-menu # lock screen
     # bind = $mainMod, Return, exec, $term
@@ -266,13 +265,14 @@
     bind = $mainMod, E, exec, thunar
     bind = $mainMod, C, exec, code # open vs code
     bind = $mainMod, B, exec, $browser
-    bind = $mainMod, O, exec, obsidian
+    bind = $mainMod, n, exec, nb
+    bind = $mainMod, , exec,
     bind = $mainMod SHIFT, X, exec, $colorpicker
     bind = $mainMod, space, exec, launcher
     # bind = $mainMod, N, exec, kitty -- distrobox enter ros-noetic
     # bind = $mainMod, H, exec, kitty -- distrobox enter ros-humble
     bind = $mainMod, A, exec, anyrun
-    bind = CTRL, Soace, exec, walker
+    bind = CTRL, Space, exec, walker
 
     bind = ,XF86MonBrightnessUp, exec, brightness set +5%
     bind = ,XF86MonBrightnessDown, exec, brightness set 5%-
@@ -306,12 +306,17 @@
     # █▀▀ █▀█ █▀▀ █░█ █▀
     # █▀░ █▄█ █▄▄ █▄█ ▄█
 
+    bind = SUPER, left, exec, hyprnome --previous
+    bind = SUPER, right , exec, hyprnome
+    bind = SUPER_SHIFT, left, exec, hyprnome --previous --move
+    bind = SUPER_SHIFT, right, exec, hyprnome --move
+
     bind = $mainMod, h, movefocus, l
     bind = $mainMod, l, movefocus, r
     bind = $mainMod, k, movefocus, u
     bind = $mainMod, j, movefocus, d
-    bind = $mainMod, left, movefocus, l
-    bind = $mainMod, right, movefocus, r
+    bind = $mainMod_ALT, left, movefocus, l
+    bind = $mainMod_ALT, right, movefocus, r
     bind = $mainMod, up, movefocus, u
     bind = $mainMod, down, movefocus, d
     bind = $mainMod, BracketLeft, movefocus, l
@@ -414,6 +419,9 @@
     windowrulev2 = float,class:^(blueman-manager)$
     windowrulev2 = float,class:^(nm-applet)$
     windowrulev2 = float,class:^(nm-connection-editor)$
+
+    windowrulev2 = float, class:(clipse)
+    windowrulev2 = size 622 652, class:(clipse)
 
     # layerrule = xray 1, .*
     layerrule = blur, swaylock

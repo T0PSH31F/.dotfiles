@@ -4,14 +4,14 @@ Probably iisn't on this peice of $*** pirate ship! Loot these dots at your own p
 
 inputs = {
   # NixPkgs (nixos-24.05)
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+  # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
   # NixPkgs (nixos-unstable)
   # nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
   # NixPkgs Master (nixos-unstable)
-    nixpkgs-master.url = "github:nixos/nixpkgs/master";
+  # nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
   # Home Manager - Handles Userland Files and Dots Managment
     home-manager.url = "github:nix-community/home-manager";
@@ -25,7 +25,7 @@ inputs = {
     flake-compat.flake = false;
 
   # Flake Utils
-    flake-utils.url = "github:numtide/flake-utils";
+  # flake-utils.url = "github:numtide/flake-utils";
 
   # Hardware Configuration
     nixos-hardware.url = "github:nixos/nixos-hardware";
@@ -87,63 +87,18 @@ inputs = {
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
-  # Emacs-Overlay
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
-    emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
-    emacs-overlay.inputs.flake-utils.follows = "flake-utils";
-
   # Hyprland
     hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+      url = "git+https://github.com/hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-  # Hy3
-    hy3 = {
-      url = "github:outfoxxed/hy3";
-      inputs.hyprland.follows = "hyprland";
-    };
-
-  # Hypridle
-    hypridle.url = "github:hyprwm/Hypridle";
-
-  # Hyprlock
-    hyprlock.url = "github:hyprwm/Hyprlock";
-
-  # HyprCursors
-    # Frappe
-      hyprcatppuccin-frappe-dark = {
-        url = "https://github.com/entailz/hyprcatppuccin/raw/master/hyprconverted/extracted_Catppuccin-Frappe-Dark-Cursors.tar.gz";
-        flake = false;
-      };
-    # Latte
-      hyprcatppuccin-latte-blue = {
-        url = "https://github.com/entailz/hyprcatppuccin/raw/master/hyprconverted/extracted_Catppuccin-Latte-Blue-Cursors.tar.gz";
-        flake = false;
-      };
-    # Macchiato
-      hyprcatppuccin-macchiato-dark = {
-        url = "https://github.com/entailz/hyprcatppuccin/raw/master/hyprconverted/extracted_Catppuccin-Macchiato-Dark-Cursors.tar.gz";
-        flake = false;
-      };
-    # Mocha
-      hyprcatppuccin-mocha-dark = {
-        url = "https://github.com/entailz/hyprcatppuccin/raw/master/hyprconverted/extracted_Catppuccin-Mocha-Dark-Cursors.tar.gz";
-        flake = false;
-      };
 
   # Hyprspace (workspace overview plugin)
     hyprspace.url = "github:KZDKM//Hyprspace";
 
-  # Hyprpaper (wallpaper manager)
-    hyprpaper.url = "github:hyprwm/hyprpaper";
-
-  # Hyprland user contributions flake
-    hyprland-contrib = {
-      url = "github:hyprwm/contrib";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
+  # Hyprpanel (AGS condiguration)
+    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+  
   # Hyprland plugins
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
@@ -151,10 +106,10 @@ inputs = {
     };
 
   # Hyprland socket watcher
-    hypr-socket-watch = {
-      url = "github:khaneliman/hypr-socket-watch";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+  #  hypr-socket-watch = {
+  #    url = "github:khaneliman/hypr-socket-watch";
+  #    inputs.nixpkgs.follows = "nixpkgs";
+  #  };
 
   # Jerry - Dem Anime's tho...
     jerry.url = "github:justchokingaround/jerry";
@@ -162,12 +117,13 @@ inputs = {
 
   # Lobster - Dem movies tho shhhh....
     lobster.url = "github:justchokingaround/lobster";
-
+    lobster.inputs.nixpkgs.follows = "nixpkgs";
+    
   # Lanzaboote - Secure boot(TPM2)
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.3.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+  #  lanzaboote = {
+  #    url = "github:nix-community/lanzaboote/v0.3.0";
+  #    inputs.nixpkgs.follows = "nixpkgs";
+  #  };
 
   # Nix-index database - For weekly updates and searching packages from cli
     nix-index-database = {
@@ -190,18 +146,25 @@ inputs = {
     nix-ld.inputs.nixpkgs.follows = "nixpkgs";
 
   # Nix grub themes
-    nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
-    nixos-grub-themes.inputs.nixpkgs.follows = "nixpkgs";
+  #  nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
+  #  nixos-grub-themes.inputs.nixpkgs.follows = "nixpkgs";
 
   # NVF nixvim fork by notashelf
-    nvf.url = "github:notashelf/nvf";
-    nvf.inputs.nixpkgs.follows = "nixpkgs";
+    # obsidian-nvim.url = "github:epwalsh/obsidian.nvim";
+    nvf = {
+      url = "github:notashelf/nvf";
+      # you can override input nixpkgs
+      inputs.nixpkgs.follows = "nixpkgs";
+      # you can also override individual plugins
+      # for example:
+      # inputs.obsidian-nvim.follows = "obsidian-nvim"; # <- this will use the obsidian-nvim from your inputs
+    };
 
   # Neovim Nixvim configuration by redyf
     neve.url = "github:redyf/neve";
 
   # Nuenv
-    nuenv.url = "github:DeterminateSystems/nuenv";
+  # nuenv.url = "github:DeterminateSystems/nuenv";
 
   # Nyaa
     nyaa = {
@@ -223,10 +186,7 @@ inputs = {
   # Pre Commit Hooks
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
   # Pre-commit-hooks Cachix
-    pre-commit-hooks-nix.url = "github:cachix/pre-commit-hooks.nix";
-
-  # Pyprland - Hyprland UI/YX and plugin's written and configured in Python
-    pyprland.url = "github:hyprland-community/pyprland";
+  # pre-commit-hooks-nix.url = "github:cachix/pre-commit-hooks.nix";
 
   # Sops-Nix - Nix encryption & age secret management
     sops-nix = {
@@ -239,8 +199,9 @@ inputs = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-  # Base-16 Nix Themeing Conversion
-    nix-colors.url = "github:misterio77/nix-colors";
+
+  # Base-16 Nix Theme Conversion
+  # nix-colors.url = "github:misterio77/nix-colors";
 
   # Spicetify - Spotify theming and extension's
     spicetify-nix = {
@@ -261,12 +222,6 @@ inputs = {
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-  # Wezterm - GPU-accelerated TTY(Terminal) emulator
-    wezterm = {
-      url = "github:wez/wezterm?dir=nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
   # Vault Integration
     vault-service.url = "github:DeterminateSystems/nixos-vault-service";
     vault-service.inputs.nixpkgs.follows = "nixpkgs";
@@ -277,7 +232,7 @@ inputs = {
   outputs =
     inputs:
     let
-  inherit (inputs) hyprland nixpkgs;
+  inherit (inputs) hyprland hyprpanel aagl home-manager nixpkgs;
       supportedSystems = [ "x86_64-linux" "x86_64-darwin" "aarch64-linux" "aarch64-darwin" ];
 
       # Helper function to generate an attrset '{ x86_64-linux = f "x86_64-linux"; ... }'.
@@ -303,7 +258,7 @@ inputs = {
       channels-config = {
         allowUnfree = true;
         allowUnfreePredicate = pkg: true;
-        nixpkgs.configf.packageOverrides = pkgs: {
+        nixpkgs.config.packageOverrides = pkgs: {
           # integrates nur within Home-Manager
           nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
             inherit pkgs;
@@ -314,9 +269,9 @@ inputs = {
       };
 
       overlays = with inputs; [
+        hyprpanel.overlay
         snowfall-flake.overlays.default
-        nuenv.overlays.default
-        emacs-overlay.overlays.default
+     #  nuenv.overlays.default
       ];
 
       homes.modules = with inputs; [
@@ -326,17 +281,19 @@ inputs = {
       systems.modules.nixos = with inputs; [
         aagl.nixosModules.default
         arion.nixosModules.arion
+        catppuccin.nixosModules.catppuccin
         disko.nixosModules.default
-      #  dedsec-grub-theme.nixosModule
+      # dedsec-grub-theme.nixosModules.dedsec-grub-theme
         home-manager.nixosModules.home-manager
         hyprland.nixosModules.default
         nur.nixosModules.nur
-        nvf.nixosModules.default
+      # nvf.nixosModules.default
         vault-service.nixosModules.nixos-vault-service
         stylix.nixosModules.stylix
       ];
 
       systems.modules.home = with inputs; [
+        ags.homeManagerModules.default
         anyrun.homeManagerModules.default
         hyprland.homeManagerModules.default
         jerry.homeManagerModules.default
@@ -348,7 +305,7 @@ inputs = {
         walker.homeManagerModules.default
         ];
 
-      deploy = lib.mkDeploy {inherit (inputs) self;};
+    # deploy = lib.mkDeploy {inherit (inputs) self;};
 
       templates = import ./templates { };
 

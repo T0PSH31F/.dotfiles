@@ -25,15 +25,16 @@ in
 
     extra-substituters = mkOpt (attrsOf substituters-submodule)
       {
+        "https://nix-community.cachix.org" = { key = "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="; };
         "https://ai.cachix.org" = { key = "ai.cachix.org-1:N9dzRK+alWwoKXQlnn0H6aUx0lU/mspIoz8hMvGvbbc="; };
         "https://t0psh31f.cachix.org" = { key = "t0psh31f.cachix.org-1:8Xdk8ilxI1zv/Tig4vx40g1i708jxpUKr9JNZAIN3tI="; };
         "https://anyrun.cachix.org" = { key = "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="; };
         "https://hyprland.cachix.org" = { key = "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="; };
         "https://nix-gaming.cachix.org" = { key = "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="; };
         "https://nixpkgs-wayland.cachix.org" = { key = "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="; };
-        "https://nix-community.cachix.org" = { key = "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="; };
         "https://walker.cachix.org" = { key = "walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM="; };
         "https://walker-git.cachix.org" = { key = "walker-git.cachix.org-1:vmC0ocfPWh0S/vRAQGtChuiZBTAe4wiKDeyyXM0/7pM="; };
+        "https://ezkea.cachix.org" = { key = "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="; };
       } "Extra substituters to configure.";
   };
 
@@ -44,6 +45,10 @@ in
         message = "t0psh31f.nix.extra-substituters.${name}.key must be set";
       })
       cfg.extra-substituters;
+
+    nixpkgs.config.permittedInsecurePackages = [
+          openssl-1.1.1w
+              ];
 
     environment.systemPackages = with pkgs; [
       t0psh31f.nixos-revision

@@ -12,14 +12,13 @@ in
 
   config = mkIf cfg.enable { environment.systemPackages = [
     cfg.pkg
-    alacritty
-    foot
-    hyper
-    rio
-    socat
-    ueberzugpp
-    warp-terminal
-    wezterm
+    pkgs.alacritty
+    pkgs.foot
+    pkgs.rio
+    pkgs.socat
+    pkgs.ueberzugpp
+    pkgs.warp-terminal
+    pkgs.wezterm
 
     ]; };
 }

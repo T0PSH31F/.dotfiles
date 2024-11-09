@@ -3,16 +3,26 @@
   namespace,
   config,
   pkgs,
+  inputs,
   ...
 }:
 with lib;
 with lib.${namespace};
 let
+    filetype = import ./filetype.nix;
+    icons = import ./icons.nix;
+    manager = import ./manager.nix;
+    status = import ./status.nix;
     cfg = config.${namespace}.programs.terminal.tools.yazi;
 in
 {
 
-  imports = [ ./keymap.nix ];
+  imports = [
+   # ./filetype.nix
+   # ./icons.nix
+   # ./manager.nix
+   # ./status.nix
+      ];
 
   options.${namespace}.programs.terminal.tools.yazi = with types; {
     enable = mkBoolOpt false "Whether or not to enable yazi.";
@@ -20,79 +30,37 @@ in
 
   config = mkIf cfg.enable {
 
-  xdg.configFile."yazi/init.lua".source = ./init.lua;
+  # general file info
+  home.packages = [pkgs.exiftool];
 
+  # yazi file manager
   programs.yazi = {
     enable = true;
-    package = pkgs.yazi;
+
+    # package = inputs.yazi.packages.${pkgs.system}.default;
+
+    enableBashIntegration = true;
     enableZshIntegration = true;
+
     settings = {
       manager = {
-        ratio = [1 3 3];
-        sort_by = "natural";
+        layout = [1 4 3];
+        sort_by = "alphabetical";
+        sort_sensitive = true;
         sort_reverse = false;
         sort_dir_first = true;
-        show_hidden = true;
+        linemode = "none";
+        show_hidden = false;
         show_symlink = true;
-        linemode = "size";
       };
+
       preview = {
-      # cache_dir = "${config.xdg.cacheHome}";
-        max_height = 900;
+        tab_size = 2;
         max_width = 600;
-      };
-      log.enable = false;
-      open.rules = [
-      {
-        mime = "text/*";
-        use = ["edit" "reveal"];
-      }
-      {
-        mime = "image/*";
-        use = ["image" "reveal"];
-      }
-      {
-        mime = "video/*";
-        use = ["play" "reveal"];
-      }
-      {
-        mime = "application/json";
-        use = ["edit" "reveal"];
-      }
-      {
-        mime = "*";
-        use = ["edit" "open" "reveal"];
-      }
-    ];
-    opener = {
-      text = [
-        {
-          run = ''hx "$@" '';
-          for = "linux";
-        }
-      ];
-      image = [
-        {
-          run = ''imv "$@" '';
-          block = true;
-          for = "linux";
-        }
-      ];
-      video = [
-        {
-          run = '' "$@" '';
-          block = true;
-          for = "linux";
-        }
-      ];
-      reveal = [
-        {
-          run = ''${pkgs.exiftool}/bin/exiftool "$1";'';
-          block = true;
-        }
-          ];
-        };
+        max_height = 900;
+        cache_dir = config.xdg.cacheHome;
       };
     };
   };
+};
 }

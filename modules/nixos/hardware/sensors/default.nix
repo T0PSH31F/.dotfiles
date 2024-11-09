@@ -15,6 +15,6 @@ in
       lm_sensors
     ];
 
-    programs.coolercontrol.enable = true;
+    programs.coolercontrol.enable = false;
   };
 }

@@ -1,2 +1,5 @@
 { inputs, ... }:
-builtins.mapAttrs (_: deployLib: deployLib.deployChecks inputs.self.deploy) inputs.deploy-rs.lib
+let
+  inherit (inputs) deploy-rs;
+in
+deploy-rs.lib.${builtins.currentSystem}.deployChecks inputs.self.deploy

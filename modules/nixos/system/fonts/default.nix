@@ -17,14 +17,31 @@ in {
 
     fonts.packages = with pkgs;
       [
+        google-fonts
+        powerline-fonts
+        line-awesome
+        dotcolon-fonts
+        terminus-nerdfont
+        roboto
+        roboto-serif
+        minecraftia
+        open-sans
+        icomoon-feather
+        rubik
+        creep
+        noto-fonts-color-emoji
         material-design-icons
         font-awesome
         nerdfonts
-        noto-fonts
-        noto-fonts-cjk-sans
-        noto-fonts-cjk-serif
         noto-fonts-color-emoji
-        sarasa-gothic
+        overpass
+        zpix-pixel-font
+        twitter-color-emoji
+        departure-mono
+       # joypixels
+        ultimate-oldschool-pc-font-pack
+        nerd-font-patcher
+        pixel-code
         (nerdfonts.override { fonts = [ "Hack" ]; })
       ] ++ cfg.fonts;
   };

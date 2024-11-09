@@ -31,8 +31,9 @@ in
       graphical = {
         apps = {
               anyrun = enabled;
-               jerry = enabled;
+              jerry = enabled;
                 nyaa = enabled;
+                obs = enabled;
               walker = enabled;
                 };
         browsers = {
@@ -40,10 +41,15 @@ in
             firefox = enabled;
                     };
         editors = {
-            emacs = enabled;
             vscode = enabled;
                       };
+      # desktop = {
+      #     addons = {
+      #       spotifyd = enabled;
+      #     };
+
         };
+
 
         terminal = {
           emulators = {

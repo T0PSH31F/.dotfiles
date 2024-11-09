@@ -7,7 +7,7 @@ let
 in
 {
   options.${namespace}.virtualisation.podman = {
-    enable = mkBoolOpt false "Whether or not to enable Podman.";
+    enable = mkBoolOpt true "Whether or not to enable Podman.";
   };
 
   config = mkIf cfg.enable {

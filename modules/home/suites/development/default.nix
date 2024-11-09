@@ -7,12 +7,12 @@ let
 in
 {
   options.${namespace}.suites.development = {
-    enable = mkBoolOpt false "Whether or not to enable common development configuration.";
+    enable = mkBoolOpt true "Whether or not to enable common development configuration.";
     aws.enable = mkBoolOpt false "Whether or not to enable aws development configuration.";
-    docker.enable = mkBoolOpt false "Whether or not to enable docker development configuration.";
+    docker.enable = mkBoolOpt true "Whether or not to enable docker development configuration.";
     kubernetes.enable = mkBoolOpt false "Whether or not to enable kubernetes development configuration.";
-    nix.enable = mkBoolOpt false "Whether or not to enable nix development configuration.";
-    sql.enable = mkBoolOpt false "Whether or not to enable sql development configuration.";
+    nix.enable = mkBoolOpt true "Whether or not to enable nix development configuration.";
+    sql.enable = mkBoolOpt true "Whether or not to enable sql development configuration.";
   };
 
   config = mkIf cfg.enable {
@@ -23,7 +23,9 @@ in
           jq
           onefetch
           postman
+          libsass
           sassc
+          dart-sass
           tokei # need to know how many lines of poorly written code you typed ? 🦀
           wildcard
         ]
@@ -31,6 +33,8 @@ in
           alejandra
           deadnix
           nil
+          nixd
+          treefmt
           nixfmt-rfc-style
           nixpkgs-fmt
           nixpkgs-hammering
@@ -51,16 +55,16 @@ in
       programs = {
         graphical = {
           editors = {
-            emacs = enabled;
+          #  emacs = enabled;
             vscode = enabled;
           };
         };
 
         terminal = {
           editors = {
-          # nvf = enabled;
+            nvf = enabled;
             helix = enabled;
-          # neovim = enabled;
+
           };
 
           tools = {

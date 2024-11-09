@@ -39,11 +39,10 @@ in
 
     environment.systemPackages = with pkgs; [
       cryptsetup
-      paperkey
       gnupg
+      paperkey
       pinentry-curses
       pinentry-qt
-      paperkey
     ];
 
     programs = {

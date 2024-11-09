@@ -1,7 +1,8 @@
 { lib, config, namespace, ... }:
 
 let
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkIf;
+  inherit (lib.${namespace}) mkBoolOpt;
 
   cfg = config.${namespace}.programs.terminal.tools.starship;
   fish = config.${namespace}.programs.terminal.shells.fish;
@@ -10,17 +11,17 @@ let
 in
 {
   options.${namespace}.programs.terminal.tools.starship = {
-    enable = mkEnableOption "Whether or not to enable starship.";
+    enable = mkBoolOpt false "Whether or not to enable starship.";
   };
 
   config = mkIf cfg.enable {
     programs = {
       starship = {
         enable = true;
-        enableBashIntegration = bash.enable;
-        enableFishIntegration = fish.enable;
-        enableZshIntegration = zsh.enable;
-        settings = {
+        enableBashIntegration = true;
+        enableFishIntegration = true;
+        enableZshIntegration =  true;
+      settings = {
           format = ''$nix_shell$directory$aws$all$package$fill$vcsh$git_commit$git_state$git_metrics$git_branch$git_status
 $cmd_duration$jobs$battery$status$shell$custom$memory_usage$character'';
           right_format = "$time";

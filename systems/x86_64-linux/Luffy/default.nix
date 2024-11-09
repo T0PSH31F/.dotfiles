@@ -33,7 +33,7 @@ with lib.${namespace};
     suites = {
     #  desktop = enabled;
     #  development = enabled;
-      yahrr = enabled;
+    #  yahrr = enabled;
     };
 
     system = {

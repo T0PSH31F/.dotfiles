@@ -1,4 +1,4 @@
-{ config, lib, namespace, pkgs, ... }:
+{ config, lib, namespace, pkgs, inputs, ... }:
 let
   inherit (lib) mkIf;
   inherit (lib.${namespace}) mkBoolOpt enabled;
@@ -13,85 +13,69 @@ in
   config = mkIf cfg.enable {
 
     home.packages = with pkgs; [
-    # inputs.Neve.packages.${pkgs.system}.default
-    # inputs.anyrun.packages.${pkgs.system}.anyrun
+    #  inputs.Neve.packages."x86_64-linux".default
+      inputs.anyrun.packages."x86_64-linux".anyrun
       accountsservice
-      adw-gtk3
+      aichat
+    # adw-gtk3
+      aria2
       ags
       blueman
-      bemenu
       birdtray
       brightnessctl
       candy-icons
-      cava
       coreutils
-      clipman
-      cliphist
-      curl
-      dunst
-      feh
-      fuzzel
+      clipse
       gpt4all
-      gvfs
       gawk
-      gnome.gnome-control-center
-      nautilus
+      gnome-control-center
       totem
       gtksourceview
       gradience
-      grim
       gruvbox-plus-icons
       glib
-      gvfs
       hypridle
       hyprlock
       hyprcursor
+      hyprpanel
       hyprpicker
       hyprkeys
+      hyprnome
       hyprland-workspaces
       hyprland-autoname-workspaces
-      kanshi
-      kdePackages.kio
-      kodi-wayland
       lavalauncher
       loupe
       libadwaita
       libinput
       libdbusmenu-gtk3
       libsForQt5.kded
-      imagemagick
+      lxappearance
       insync
       material-black-colors
       mission-center
       meson
+      nb
       nixos-icons
       nwg-displays
       nwg-look
       nwg-launchers
       nwg-dock-hyprland
-      qt5ct
+      libsForQt5.qt5ct
+      qt6ct
       qadwaitadecorations-qt6
       qadwaitadecorations
-      sassc
-      slurp
-      swappy
       swaybg
       swaylock
       swayidle
+      swaynotificationcenter
       swayosd
-      spotify
       swww
       openai-whisper
-      overskride
       pamixer
       playerctl
       procps
-      rofi-wayland
       rose-pine-icon-theme
-      udiskie
-      udisks
       usermount
-      waybar
       wayland-utils
       wayland-protocols
       wl-clipboard
@@ -99,11 +83,8 @@ in
       wlogout
       wlsunset
       wlr-randr
-      wofi
       util-linux
       xwayland
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-hyprland
       zathura
       zoxide
           ];
@@ -115,6 +96,12 @@ in
             anyrun = enabled;
               };
           desktop = {
+            addons = {
+             # ags = enabled;
+              rofi = enabled;
+              waybar = enabled;
+              wofi = enabled;
+            };
             hyprland = enabled;
               };
         };

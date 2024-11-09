@@ -23,7 +23,17 @@ in
     hardware.steam-hardware.enable = true;
 
     environment.systemPackages = with pkgs; [
-      retrofe
+    # retrofe
+      itch
+      itchiodl
+      haskellPackages.switch
+      mupen64plus
+      ppsspp-qt
+      dolphin-emu
+      lime3ds
+      flycast
+      snes9x-gtk
+      ryujinx
       retroarchFull
       steamtinkerlaunch
       winetricks

@@ -55,7 +55,7 @@ in
 
       games = {
         enable = true;
-      # aagl.enable = true;
+      aagl.enable = true;
       };
 
       graphics = {

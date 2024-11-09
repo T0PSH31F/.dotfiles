@@ -13,44 +13,63 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       appimage-run
-      aichat
       aircrack-ng
-      armcord
+      arduino
+      arduinoOTA
+      arduino-ide
       bluez
       bluez-alsa
       bluez-tools
       bluetuith
       bottom # sys monitor
       btop
+      bun
       caprine-bin
+      esbuild
+      exportarr
+      fd
       fuzzel
       gedit
-      gpt4all
+      glib
+      gnome-disk-utility
+      gnome-bluetooth
+      gobject-introspection
+      grimblast
+      gpu-screen-recorder
       htop
+      hyprpanel
       inputs.lobster.packages."x86_64-linux".lobster
       kate
-      lexido
-      nextcloud-client
-      nextcloud29
+      libnotify
+      legcord
+      libgtop
       newsboat
-      mods
-      openai-whisper-cpp
+      nmon
+      matugen
       sbctl
-      skypilot
-      spotify
       synapse
+      sublime3
       t0psh31f.list-iommu
       trackma
       tangram
+      texstudio
+      themechanger
       tor
       tor-browser
+      typescript
       patch
-      pinokio
       powertop
-      inputs.pyprland.packages."x86_64-linux".pyprland
+      pywal
+      python3
+      python312Packages.finvizfinance
+      vimPlugins.avante-nvim
       vivaldi
+      usermount
+      wallust
+      wpgtk
     ];
 
+programs.partition-manager.enable = true;
 networking.networkmanager.enable = true;
 
 hardware = {
@@ -66,10 +85,6 @@ services = {
   devmon.enable = true;
   gvfs.enable = true;
   udisks2.enable = true;
-#  displayManager.sddm = {
-#   theme = sddm-lain-wired-theme;
-#    wayland.enable = true;
-#  };
 };
 
     t0psh31f = {
@@ -96,6 +111,7 @@ services = {
         doas = disabled;
         gpg = disabled;
         keyring.enable = config.${namespace}.desktop.gnome.enable;
+        yubikey = enabled;
       };
 
       services = {

@@ -36,6 +36,8 @@ in
     environment.systemPackages = with pkgs; [
       pulsemixer
       pavucontrol
+      reaper
+      spotify
     ] ++ cfg.extra-packages;
 
     t0psh31f.user.extraGroups = [ "audio" ];

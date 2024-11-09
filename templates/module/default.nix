@@ -5,7 +5,7 @@
 , ...
 }:
 with lib;
-with lib.custom; let
+with lib.${namespace}; let
   cfg = config.module;
 in
 {

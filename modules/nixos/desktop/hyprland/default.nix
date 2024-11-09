@@ -22,37 +22,19 @@ in {
         anyrun
         brightnessctl
         grim
+        hyprpanel
+        hyprland-protocols
         networkmanagerapplet
         overskride
         playerctl
         sirikali
         slurp
         sway
-        waybar
         wlsunset
         wl-clipboard
-      # Virtual keyboard
-        maliit-framework
-        maliit-keyboard
+        varia
   ];};
-      services.greetd = {
-      package = pkgs.greetd;
-      enable = true;
-      settings = rec {
-        initial_session = {
-          command = let
-            flags = lib.cli.toGNUCommandLineShell {} {
-              t = "";
-              window-padding = 1;
-              g = "Hello, T0PSH31F";
-              c = "Hyprland";
-            };
-          in "${pkgs.greetd.tuigreet}/bin/tuigreet ${flags}";
-          user = "t0psh31f";
-        };
-        default_session = initial_session;
-      };
-    };
+
     systemd = {
       user.services.polkit-gnome = {
         description = "polkit-gnome-authentication-agent-1";
@@ -67,20 +49,52 @@ in {
       };
     };
 
-#services.xserver = {
-#  displayManager = {
-#    gdm = {
-#      enable = true;
-#      wayland = true;};
-#    };
-#    libinput.enable = true;
-#    };
-    programs.hyprland.enable = true;
+  #  services.displayManager.sddm = {
+  #    enable = true;
+  #    wayland.enable = true;
+  #    enableHidpi = true;
+  #    package = pkgs.sddm;
+  #  };
+
+    services = {
+      dbus = {
+        enable = true;
+        packages = with pkgs; [
+          dconf
+          gcr
+          gnome-settings-daemon
+          ];
+      };
+
+      gnome.gnome-keyring.enable = true;
+
+      gvfs.enable = true;
+    };
+
+    programs.hyprland = {
+      enable = true;
+     # package = inputs.hyprland.packages."x86-64_linux".default;
+      xwayland.enable = true;
+      portalPackage = pkgs.xdg-desktop-portal-hyprland;
+    };
+
     programs = {
       dconf.enable = true;
       hyprlock.enable = true;
+      iio-hyprland.enable = true;
       file-roller.enable = true;
       kdeconnect.enable = true;
+      uwsm = {
+        enable = true;
+        waylandCompositors = {
+          hyprland = {
+            prettyName = "Hyprland";
+            comment = "Hyprland compositor managed by UWSM";
+            binPath = "/run/current-system/sw/bin/Hyprland";
+          };
+        };
+      };
+      waybar.enable = true;
     };
 
     };

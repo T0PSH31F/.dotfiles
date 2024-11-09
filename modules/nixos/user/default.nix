@@ -70,6 +70,9 @@ in
 
   config = {
     environment.systemPackages = with pkgs; [
+      cava
+      cbonsai
+      cmatrix
       fd
       figlet
       fortune

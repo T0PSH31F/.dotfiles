@@ -13,7 +13,7 @@ in
   config = mkIf cfg.enable {
     programs.ripgrep = {
       enable = true;
-      package = pkgs.ripgrep;
+      package = pkgs.ripgrep-all;
 
       arguments = [
         # Don't have ripgrep vomit a bunch of stuff on the screen

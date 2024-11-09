@@ -11,7 +11,6 @@ let
     aylurs-widgets
     clipboard-indicator-2
     dash-to-dock
-    emoji-selector
     forge
     gsconnect
     gtile
@@ -44,19 +43,18 @@ in
   config = mkIf cfg.enable {
     t0psh31f.system.xkb.enable = true;
     t0psh31f.desktop.addons = {
-      gtk = enabled;
-      electron-support = enabled;
+    #   = enabled;
+    #  electron-support = enabled;
     };
 
     environment.systemPackages = with pkgs; [
       (hiPrio t0psh31f.xdg-open-with-portal)
       wl-clipboard
-      gnome.gnome-tweaks
-      gnome.nautilus-python
+      gnome-tweaks
+      nautilus-python
     ] ++ defaultExtensions ++ cfg.extensions;
 
-    environment.gnome.excludePackages = with pkgs.gnome; [
-      pkgs.gnome-tour
+    environment.gnome.excludePackages = with pkgs; [
       epiphany
       geary
       gnome-font-viewer
@@ -115,7 +113,7 @@ in
 
       libinput.enable = true;
       displayManager.gdm = {
-        enable = false;
+        enable = true;
         wayland = cfg.wayland;
         autoSuspend = cfg.suspend;
       };
@@ -124,13 +122,13 @@ in
 
     t0psh31f.home.extraOptions = {
       dconf.settings =
-        let
-          get-wallpaper = wallpaper:
-            if lib.isDerivation wallpaper then
-              builtins.toString wallpaper
-            else
-              wallpaper;
-        in
+     #   let
+     #     get-wallpaper = wallpaper:
+     #       if lib.isDerivation wallpaper then
+     #         builtins.toString wallpaper
+     #       else
+     #         wallpaper;
+     #   in
         nested-default-attrs {
           "org/gnome/shell" = {
             disable-user-extensions = false;
@@ -140,22 +138,22 @@ in
               "drive-menu@gnome-shell-extensions.gcampax.github.com"
               "user-theme@gnome-shell-extensions.gcampax.github.com"
             ];
-            favorite-apps =
-              [ "org.gnome.Nautilus.desktop" ]
-              ++ optional config.${namespace}.apps.kitty.enable "kitty.desktop"
-              ++ optional config.${namespace}.apps.discord.enable "discord.desktop"
-              ++ optional config.${namespace}.apps.element.enable "element-desktop.desktop"
-              ++ optional config.${namespace}.apps.steam.enable "steam.desktop";
+          #  favorite-apps =
+          #    [ "org.gnome.Nautilus.desktop" ]
+          #    ++ optional config.${namespace}.apps.kitty.enable "kitty.desktop"
+          #    ++ optional config.${namespace}.apps.discord.enable "discord.desktop"
+          #    ++ optional config.${namespace}.apps.element.enable "element-desktop.desktop"
+          #    ++ optional config.${namespace}.apps.steam.enable "steam.desktop";
           };
 
-          "org/gnome/desktop/background" = {
-            picture-uri = get-wallpaper cfg.wallpaper.light;
-            picture-uri-dark = get-wallpaper cfg.wallpaper.dark;
-          };
-          "org/gnome/desktop/screensaver" = {
-            picture-uri = get-wallpaper cfg.wallpaper.light;
-            picture-uri-dark = get-wallpaper cfg.wallpaper.dark;
-          };
+    #     "org/gnome/desktop/background" = {
+    #       picture-uri = get-wallpaper cfg.wallpaper.light;
+    #       picture-uri-dark = get-wallpaper cfg.wallpaper.dark;
+    #     };
+    #     "org/gnome/desktop/screensaver" = {
+    #       picture-uri = get-wallpaper cfg.wallpaper.light;
+    #       picture-uri-dark = get-wallpaper cfg.wallpaper.dark;
+    #     };
           "org/gnome/desktop/interface" = {
             color-scheme = if cfg.color-scheme == "light" then "default" else "prefer-dark";
             enable-hot-corners = false;

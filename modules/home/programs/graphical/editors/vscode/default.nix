@@ -20,32 +20,32 @@ in
       extensions = with pkgs.vscode-extensions; [
         arrterian.nix-env-selector
         bbenoist.nix
-        catppuccin.catppuccin-vsc
-        christian-kohler.path-intellisense
+      #  catppuccin.catppuccin-vsc
+      #  christian-kohler.path-intellisense
         dbaeumer.vscode-eslint
         eamodio.gitlens
         esbenp.prettier-vscode
         formulahendry.auto-close-tag
         formulahendry.auto-rename-tag
-        github.vscode-github-actions
-        github.vscode-pull-request-github
-        gruntfuggly.todo-tree
+     #   github.vscode-github-actions
+     #   github.vscode-pull-request-github
+     #   gruntfuggly.todo-tree
         irongeek.vscode-env
         mkhl.direnv
-        ms-azuretools.vscode-docker
-        ms-python.python
-        ms-python.vscode-pylance
+     #   ms-azuretools.vscode-docker
+     #   ms-python.python
+     #   ms-python.vscode-pylance
         ms-vscode-remote.remote-ssh
-        ms-vscode.cpptools
-        ms-vsliveshare.vsliveshare
+     #   ms-vscode.cpptools
+     #   ms-vsliveshare.vsliveshare
         redhat.vscode-yaml
         rust-lang.rust-analyzer
         shardulm94.trailing-spaces
         sumneko.lua
-        timonwong.shellcheck
+     #   timonwong.shellcheck
         usernamehw.errorlens
-        vscode-icons-team.vscode-icons
-        xaver.clang-format
+     #   vscode-icons-team.vscode-icons
+     #   xaver.clang-format
         yzhang.markdown-all-in-one
       ];
 
@@ -67,12 +67,12 @@ in
       #  "terminal.integrated.fontFamily" = "JetBrainsMono Nerd Font Mono Regular";
 
         # LSP
-        "java.jdt.ls.java.home" = "${pkgs.jdk17}/lib/openjdk";
-        "java.configuration.runtimes" = [
-          "${pkgs.jdk8}/lib/openjdk"
-          "${pkgs.jdk17}/lib/openjdk"
-          "${pkgs.jdk22}/lib/openjdk"
-        ];
+       # "java.jdt.ls.java.home" = "${pkgs.jdk17}/lib/openjdk";
+       # "java.configuration.runtimes" = [
+       #   "${pkgs.jdk8}/lib/openjdk"
+       #   "${pkgs.jdk17}/lib/openjdk"
+       #   "${pkgs.jdk22}/lib/openjdk"
+       # ];
         "redhat.telemetry.enabled" = false;
 
         # Formatters
@@ -117,17 +117,17 @@ in
         };
 
         # Git settings
-        "git.allowForcePush" = true;
+       # "git.allowForcePush" = true;
         "git.autofetch" = true;
         "git.confirmSync" = false;
         "git.enableSmartCommit" = true;
         "git.openRepositoryInParentFolders" = "always";
-        "gitlens.gitCommands.skipConfirmations" = [
-          "fetch:command"
-          "stash-push:command"
-          "switch:command"
-          "branch-create:command"
-        ];
+      #  "gitlens.gitCommands.skipConfirmations" = [
+      #    "fetch:command"
+      #    "stash-push:command"
+      #    "switch:command"
+      #    "branch-create:command"
+      #  ];
 
         # Editor
         "editor.bracketPairColorization.enabled" = true;
@@ -150,8 +150,8 @@ in
         "terminal.integrated.automationShell.linux" = "nix-shell";
         "terminal.integrated.cursorBlinking" = true;
         "terminal.integrated.defaultProfile.linux" = "zsh";
-        "terminal.integrated.enableBell" = false;
-        "terminal.integrated.gpuAcceleration" = "on";
+        "terminal.integrated.enableBell" = true;
+      #  "terminal.integrated.gpuAcceleration" = "on";
 
         # Workbench
         "workbench.editor.tabCloseButton" = "left";

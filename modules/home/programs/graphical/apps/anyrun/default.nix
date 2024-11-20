@@ -6,9 +6,7 @@ let
   cfg = config.${namespace}.programs.graphical.apps.anyrun;
 in
 {
-  imports = [inputs.anyrun.homeManagerModules.default];
-
-  options.${namespace}.programs.graphical.apps.anyrun = {
+   options.${namespace}.programs.graphical.apps.anyrun = {
     enable = mkBoolOpt false "Whether or not to enable support for anyrun";
   };
 

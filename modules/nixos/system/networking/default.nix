@@ -19,12 +19,11 @@ in
         "127.0.0.1" = [ "local.test" ] ++ (cfg.hosts."127.0.0.1" or [ ]);
       } // cfg.hosts;
 
-      networkmanager = {
-        wifi.backend = "wpa_supplicant";
-        enable = true;
-        dhcp = "internal";
-      };
-    };
+       networkmanager = {
+             enable = true;
+     	     dhcp = "internal";
+    	   };
+   	 };
 
     # Fixes an issue that normally causes nixos-rebuild to fail.
     # https://github.com/NixOS/nixpkgs/issues/180175

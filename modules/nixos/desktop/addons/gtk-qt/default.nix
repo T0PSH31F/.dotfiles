@@ -4,7 +4,7 @@ with lib;
 with lib.${namespace};
 let
   cfg = config.${namespace}.desktop.addons.gtk-qt;
-  gdmCfg = config.services.xserver.displayManager.gdm;
+  #gdmCfg = config.services.xserver.displayManager.gdm;
 in
 {
   options.${namespace}.desktop.addons.gtk-qt = with types; {
@@ -27,8 +27,8 @@ in
     environment.systemPackages = [
       cfg.icon.pkg
       cfg.cursor.pkg
-
-    ];
+    #  libsForQt5.qtwayland
+      ];
 
     environment.sessionVariables = {
       XCURSOR_THEME = cfg.cursor.name;
@@ -56,30 +56,14 @@ in
       };
     };
 
-    home = {
-      packages = with pkgs; [
-        qt5.qtwayland
-        libsForQt5.qtwayland
-        qt6.qtwayland
-        ];
-
-    pointerCursor = {
-      gtk.enable = true;
-      x11.enable = true;
-      package = pkgs.afterglow-cursors-recolored;
-      name = "Dracula-Green";
-      size = 36;
-    };
-      };
-
-    # Theme QT -> GTK
-    qt = {
-      enable = true;
-      platformTheme.name = "gtk";
-      style = {
-        name = "adwaita-dark";
-        package = pkgs.adwaita-qt;
-      };
-    };
+  # Theme QT -> GTK
+  #  qt = {
+  #    enable = true;
+  #    platformTheme.name = "gtk";
+  #    style = {
+  #      name = "adwaita-dark";
+  #      package = pkgs.adwaita-qt;
+  #    };
+  #  };
   };
 }

@@ -7,9 +7,9 @@
 }:
 with lib;
 with lib.${namespace}; let
-  cfg = config.${namespace}.desktop.hyprland;
+  cfg = config.${namespace}.desktop.des.hyprland;
 in {
-  options.${namespace}.desktop.hyprland = with types; {
+  options.${namespace}.desktop.des.hyprland = with types; {
     enable = mkBoolOpt false "Whether or not to use Hyprland as the desktop environment.";
   };
 
@@ -18,10 +18,9 @@ in {
       sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
       systemPackages = with pkgs; [
         (hiPrio t0psh31f.xdg-open-with-portal)
-        ags
-        anyrun
         brightnessctl
         grim
+	grimblast
         hyprpanel
         hyprland-protocols
         networkmanagerapplet
@@ -49,13 +48,6 @@ in {
       };
     };
 
-  #  services.displayManager.sddm = {
-  #    enable = true;
-  #    wayland.enable = true;
-  #    enableHidpi = true;
-  #    package = pkgs.sddm;
-  #  };
-
     services = {
       dbus = {
         enable = true;
@@ -65,10 +57,6 @@ in {
           gnome-settings-daemon
           ];
       };
-
-      gnome.gnome-keyring.enable = true;
-
-      gvfs.enable = true;
     };
 
     programs.hyprland = {
@@ -84,18 +72,7 @@ in {
       iio-hyprland.enable = true;
       file-roller.enable = true;
       kdeconnect.enable = true;
-      uwsm = {
-        enable = true;
-        waylandCompositors = {
-          hyprland = {
-            prettyName = "Hyprland";
-            comment = "Hyprland compositor managed by UWSM";
-            binPath = "/run/current-system/sw/bin/Hyprland";
-          };
-        };
-      };
       waybar.enable = true;
-    };
-
+      };
     };
   }

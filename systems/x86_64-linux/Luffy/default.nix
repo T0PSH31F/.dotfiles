@@ -5,7 +5,7 @@ with lib.${namespace};
 {
   imports = [ ./hardware-configuration.nix ];
 
- # boot.binfmt.emulatedSystems = [ "x86_64-linux" ];
+# boot.binfmt.emulatedSystems = [ "aarch64-linux" "x86_64-linux"];
 
   t0psh31f = {
     archetypes = {
@@ -16,29 +16,28 @@ with lib.${namespace};
     apps = { qbittorrent = enabled; };
 
     desktop = {
-      hyprland = enabled;
-    };
+	des = {
+    	  hyprland = enabled;
+  	  #  gnome = enabled;
+	  #  plasma = enabled;
+     	  wayfire = enabled;
+   	    };
+  	  };
 
-    hardware = {};
+    hardware = { fingerprint = enabled; };
 
-    security = { gpg = mkForce disabled; };
+#   security = { gpg = mkForce disabled; };
 
     services = {
       home-assistant = enabled;
-      mealie = enabled;
       printing = lib.mkForce disabled;
     };
 
-
     suites = {
-    #  desktop = enabled;
-    #  development = enabled;
-    #  yahrr = enabled;
+     #  yahrr = enabled;
     };
 
-    system = {
-
-    };
+    system = {};
   };
 
   # This value determines the NixOS release from which the default

@@ -23,6 +23,7 @@ in
           jq
           onefetch
           postman
+        # sass
           libsass
           sassc
           dart-sass
@@ -44,6 +45,16 @@ in
         ++ lib.optionals cfg.sql.enable [
           dbeaver-bin
           mysql-workbench
+          beekeeper-studio
+          csview
+          gum
+          glow
+          skate
+        #  sql-fluff
+          sql-studio
+          sqlitestudio
+        #  sqruff
+          zsv
         ];
 
       shellAliases = {
@@ -73,7 +84,7 @@ in
             k9s.enable = cfg.kubernetes.enable;
             lazydocker.enable = cfg.docker.enable;
             lazygit = enabled;
-	          neomutt = enabled;
+	    neomutt = enabled;
             node = enabled;
             python = enabled;
             tealdeer = enabled;

@@ -20,31 +20,31 @@ in
       fabric-ai
       gptscript
       gpt4all
-      gorilla-cli
+    # gorilla-cli
       jan
       lexido
       lmstudio
       local-ai
       lunacy
-      mistral-rslexido
-      mods
+      mistral-rs
+    # mods
       openai-whisper-cpp
       ollama
-      openllm
-      open-interpreter
+    # openllm
       open-webui
+      python312Packages.open-interpreter
       python312Packages.gptcache
-      python312Packages.haystack-ai
+    # python312Packages.haystack-ai
       python312Packages.langchain
       python312Packages.langsmith
       python312Packages.llama-index
-      python312Packages.llama-index-core
-      python312Packages.llama-index-llms-ollama
-      python312Packages.litellm
-      python312Packages.vllm
-      pentestgpt
+    # python312Packages.llama-index-core
+    # python312Packages.llama-index-llms-ollama
+    # python312Packages.litellm
+    # python312Packages.vllm
+    # pentestgpt
       pinokio
-      screen-pipe
+    # screen-pipe
       skypilot
       zed-editor
     ];

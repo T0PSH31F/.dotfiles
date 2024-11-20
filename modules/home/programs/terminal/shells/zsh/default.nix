@@ -26,7 +26,9 @@ in
         '';
 
         initExtra = ''
-        '' + optionalString cfg.prompt-init ''
+        eval "$(zoxide init zsh)"
+        ''
+        + optionalString cfg.prompt-init ''
           ${pkgs.toilet}/bin/toilet -f future "HACK THE MF'IN PLANET!!! /   -t0psh31f" --gay
         '';
 
@@ -68,16 +70,16 @@ in
 
         };
 
-    #   plugins = [{
-    #     name = "zsh-nix-shell";
-    #     file = "nix-shell.plugin.zsh";
-    #     src = pkgs.fetchFromGitHub {
-    #       owner = "chisui";
-    #       repo = "zsh-nix-shell";
-    #       rev = "v0.4.0";
-    #       sha256 = "037wz9fqmx0ngcwl9az55fgkipb745rymznxnssr3rx9irb6apzg";
-    #     };
-    #   }];
+       plugins = [{
+         name = "zsh-nix-shell";
+         file = "nix-shell.plugin.zsh";
+         src = pkgs.fetchFromGitHub {
+           owner = "chisui";
+           repo = "zsh-nix-shell";
+           rev = "v0.4.0";
+           sha256 = "037wz9fqmx0ngcwl9az55fgkipb745rymznxnssr3rx9irb6apzg";
+         };
+       }];
       };
 
 

@@ -14,38 +14,26 @@ in {
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
     # FIle Managers
-      adbtuifm
       archiver
       ark
       commonsCompress
+      ffmpeg
       ffmpegthumbnailer
       fff
-      file-roller
-      fsautocomplete
-      fsarchiver
       gzip
       keepassxc
       keeweb
       lf
       noice
-      nemo
-      mate.caja
-      mount-zip
-      hifile
       ranger
-      renameutils
       patool
       peazip
       pistol # General purpose file previewer designed Ranger, Lf to make scope.sh redundant
       sshfs
-      spaceFM
-      superfile
       tree
       unzip
       unar
       xarchiver
-      xfce.thunar
-      xplorer
       zip
 
     # Backups and synchronization
@@ -73,39 +61,36 @@ in {
       btrfs-progs
       btrfs-assistant
 
-    # NTFS
-      nfs-utils
-      ntfs3g
-      fuseiso
-      libdwg
+    # ADB
+      adbtuifm
       diffuse # Graphical tool for merging and comparing text files
-      openafs
-      hfsprogs
-      dmg2img
       metadata-cleaner
-      jmtpfs
-      e2fsprogs
       adbfs-rootless
       libimobiledevice
-      simple-mtpfs
+  #   simple-mtpfs
       go-mtpfs
-      ifuse
+  #   ifuse
       ];
 
     zramSwap = {
       enable = true;
       algorithm = "zstd";
     };
+
+    programs = {
+      usbtop.enable = true;
+      adb.enable = true;
+      };
+
     hardware = {
-    flipperzero.enable = true;
-    sensor.iio.enable = true;
-    xpadneo.enable = true;
-  };
+        flipperzero.enable = true;
+        sensor.iio.enable = true;
+        xpadneo.enable = true;
+    };
 
-    services.envfs.enable = true;
-
-    services.irqbalance.enable = true;
-
-    services.fstrim.enable = lib.mkDefault cfg.ssdEnable;
+    services = {
+      irqbalance.enable = true;
+      fstrim.enable = lib.mkDefault cfg.ssdEnable;
+    };
   };
 }

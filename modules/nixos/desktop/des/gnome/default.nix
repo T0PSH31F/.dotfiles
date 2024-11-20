@@ -3,13 +3,13 @@
 with lib;
 with lib.${namespace};
 let
-  cfg = config.${namespace}.desktop.gnome;
-  gdmHome = config.users.users.gdm.home;
+  cfg = config.${namespace}.desktop.des.gnome;
+# gdmHome = config.users.users.gdm.home;
 
   defaultExtensions = with pkgs.gnomeExtensions; [
     appindicator
-    aylurs-widgets
-    clipboard-indicator-2
+  #  aylurs-widgets
+  # clipboard-indicator-2
     dash-to-dock
     forge
     gsconnect
@@ -18,7 +18,7 @@ let
     logo-menu
     middle-click-to-close-in-overview
     no-overview
-    remove-app-menu
+  #  remove-app-menu
     space-bar
     top-bar-organizer
     wireless-hid
@@ -29,7 +29,7 @@ let
   mkTuple = lib.home-manager.hm.gvariant.mkTuple;
 in
 {
-  options.${namespace}.desktop.gnome = with types; {
+  options.${namespace}.desktop.des.gnome = with types; {
     enable =
       mkBoolOpt false "Whether or not to use Gnome as the desktop environment.";
     color-scheme = mkOpt (enum [ "light" "dark" ]) "dark" "The color scheme to use.";
@@ -63,7 +63,7 @@ in
     ];
 
     systemd.tmpfiles.rules = [
-      "d ${gdmHome}/.config 0711 gdm gdm"
+    #   "d ${gdmHome}/.config 0711 gdm gdm"
     ] ++ (
       # "./monitors.xml" comes from ~/.config/monitors.xml when GNOME
       # display information is updated.
@@ -106,29 +106,28 @@ in
     };
 
     # Required for app indicators
-    services.udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];
+    services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
 
-    services.xserver = {
-      enable = true;
+  #  services.xserver = {
+  #   enable = true;
 
-      libinput.enable = true;
-      displayManager.gdm = {
-        enable = true;
-        wayland = cfg.wayland;
-        autoSuspend = cfg.suspend;
-      };
-      desktopManager.gnome.enable = true;
-    };
+  #   libinput.enable = true;
+  #   displayManager.gdm = {
+  #     enable = true;
+  #     wayland = cfg.wayland;
+  #     autoSuspend = cfg.suspend;
+  #   };
+    services.xserver.desktopManager.gnome.enable = true;
 
     t0psh31f.home.extraOptions = {
       dconf.settings =
-     #   let
-     #     get-wallpaper = wallpaper:
-     #       if lib.isDerivation wallpaper then
-     #         builtins.toString wallpaper
-     #       else
-     #         wallpaper;
-     #   in
+    #   let
+    #     get-wallpaper = wallpaper:
+    #       if lib.isDerivation wallpaper then
+    #         builtins.toString wallpaper
+    #       else
+    #         wallpaper;
+    #   in
         nested-default-attrs {
           "org/gnome/shell" = {
             disable-user-extensions = false;
@@ -292,6 +291,7 @@ in
             window-swap-up = [ "<Shift><Super>s" ];
             window-toggle-float = [ "<Super>f" ];
           };
+
           "org/gnome/shell/extensions/top-bar-organizer" = {
             left-box-order = [
               "menuButton"
@@ -321,6 +321,7 @@ in
           "org/gnome/shell/extensions/space-bar/shortcuts" = {
             enable-activate-workspace-shortcuts = false;
           };
+
           "org/gnome/shell/extensions/space-bar/behavior" = {
             show-empty-workspaces = false;
           };
@@ -332,10 +333,10 @@ in
         };
     };
 
-    programs.kdeconnect = {
-      enable = true;
-      package = pkgs.gnomeExtensions.gsconnect;
-    };
+  # programs.kdeconnect = {
+  #   enable = true;
+  #   package = pkgs.gnomeExtensions.gsconnect;
+  # };
 
     # Open firewall for samba connections to work.
     networking.firewall.extraCommands =

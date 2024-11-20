@@ -49,7 +49,6 @@ in
       extraComponents = [
         "radarr"
         "sonarr"
-        "apple_tv"
         "backup"
         "cast"
         "esphome"

@@ -121,11 +121,6 @@
         # █▀ █░█ ▄▀█ █▀▄ █▀█ █░█░█
         # ▄█ █▀█ █▀█ █▄▀ █▄█ ▀▄▀▄▀
 
-        drop_shadow = true
-        shadow_ignore_window = false
-        shadow_range = 100
-        shadow_render_power = 4
-        shadow_offset = 0 0
 
 
         # █▄▄ █░░ █░█ █▀█
@@ -205,7 +200,6 @@
     # █▄▄ █▀█ ░█░ █▄█ █▄█ ░█░ ▄█
 
     dwindle {
-    no_gaps_when_only = false
     pseudotile = 1 # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
     preserve_split = yes # you probably want this
     force_split = 0

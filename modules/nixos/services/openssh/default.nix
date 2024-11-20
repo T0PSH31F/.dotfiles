@@ -34,7 +34,7 @@ let
 in
 {
   options.${namespace}.services.openssh = with types; {
-    enable = mkBoolOpt false "Whether or not to configure OpenSSH support.";
+    enable = mkBoolOpt true "Whether or not to configure OpenSSH support.";
     port = mkOpt port 2222 "The port to listen on (in addition to 22).";
     manage-other-hosts = mkOpt bool true "Whether or not to add other host configurations to SSH config.";
   };

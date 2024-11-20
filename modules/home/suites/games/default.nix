@@ -25,7 +25,7 @@ in
       programs = {
         graphical = {
           apps = {
-            aagl = enabled;
+          #  aagl = enabled;
             };
           };
         terminal = {

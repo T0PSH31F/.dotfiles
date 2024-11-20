@@ -13,46 +13,33 @@ in
   config = mkIf cfg.enable {
 
     home.packages = with pkgs; [
-    #  inputs.Neve.packages."x86_64-linux".default
-      inputs.anyrun.packages."x86_64-linux".anyrun
+    # inputs.Neve.packages."x86_64-linux".default
       accountsservice
-      aichat
-    # adw-gtk3
       aria2
-      ags
-      blueman
       birdtray
       brightnessctl
       candy-icons
       coreutils
       clipse
-      gpt4all
       gawk
       gnome-control-center
-      totem
-      gtksourceview
       gradience
       gruvbox-plus-icons
-      glib
       hypridle
       hyprlock
       hyprcursor
       hyprpanel
       hyprpicker
       hyprkeys
-      hyprnome
       hyprland-workspaces
       hyprland-autoname-workspaces
       lavalauncher
-      loupe
       libadwaita
       libinput
       libdbusmenu-gtk3
       libsForQt5.kded
       lxappearance
-      insync
       material-black-colors
-      mission-center
       meson
       nb
       nixos-icons
@@ -64,7 +51,6 @@ in
       qt6ct
       qadwaitadecorations-qt6
       qadwaitadecorations
-      swaybg
       swaylock
       swayidle
       swaynotificationcenter
@@ -93,14 +79,13 @@ in
       programs = {
         graphical = {
           apps = {
-            anyrun = enabled;
-              };
+                 };
           desktop = {
             addons = {
-             # ags = enabled;
-              rofi = enabled;
+                 ags = enabled;
+                rofi = enabled;
               waybar = enabled;
-              wofi = enabled;
+                wofi = enabled;
             };
             hyprland = enabled;
               };

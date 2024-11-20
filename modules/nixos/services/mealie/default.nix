@@ -12,7 +12,7 @@ in
 
   config = mkIf cfg.enable {
     services.mealie = {
-      enable = true;
+      enable = false;
       settings = {
         BASE_URL = "http://localhost:9000";
       };

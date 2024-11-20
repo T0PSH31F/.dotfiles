@@ -13,8 +13,8 @@ in
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      calibre
-      calibre-web
+    #  calibre
+    #  calibre-web
       ebook_tools
       getxbook
       koreader

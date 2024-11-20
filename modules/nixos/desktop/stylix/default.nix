@@ -20,7 +20,7 @@ in {
       enable = true;
       homeManagerIntegration.autoImport = true;
       homeManagerIntegration.followSystem = true;
-      image = ./reaper2.png;
+      image = ./wallpapers/reaper2.png;
       # base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
       cursor = {
         package =  pkgs.breeze-hacked-cursor-theme;   # pkgs.rose-pine-cursor

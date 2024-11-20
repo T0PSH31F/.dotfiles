@@ -3,9 +3,9 @@
 with lib;
 with lib.${namespace};
 let
-  cfg = config.${namespace}.desktop.wayfire;
+  cfg = config.${namespace}.desktop.des.wayfire;
 in {
-  options.${namespace}.desktop.wayfire = with types; {
+  options.${namespace}.desktop.des.wayfire = with types; {
     enable = mkBoolOpt false "Whether or not to use Hyprland as the desktop environment.";
   };
 

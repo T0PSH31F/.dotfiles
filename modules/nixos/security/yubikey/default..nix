@@ -7,13 +7,13 @@ let
 in
 {
   options.${namespace}.security.yubikey = with types; {
-    enable = mkBoolOpt false "Whether to enable gnome yubikey.";
+    enable = mkBoolOpt true "Whether to enable yubikey.";
   };
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      yubico-pam
-      age-plugin-yubikey
+      #yubico-pam
+      #age-plugin-yubikey
       yubikey-agent
       yubikey-manager
       yubioath-flutter

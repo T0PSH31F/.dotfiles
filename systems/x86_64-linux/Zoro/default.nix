@@ -25,7 +25,7 @@ with lib.${namespace};
 
     services = {
       home-assistant = enabled;
-      mealie = enabled;
+   #  mealie = enabled;
       printing = lib.mkForce disabled;
     };
 

@@ -19,7 +19,7 @@ in
         browsers = {
           firefox = {
             enable = true;
-            gpuAcceleration = true;
+           #  gpuAcceleration = true;
             hardwareDecoding = true;
             settings = {
               # "dom.ipc.processCount.webIsolated" = 9;
@@ -55,7 +55,6 @@ in
 
       games = {
         enable = true;
-      aagl.enable = true;
       };
 
       graphics = {

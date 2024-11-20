@@ -260,7 +260,7 @@ in
             "dom.storage.next_gen" = true;
             "dom.forms.autocomplete.formautofill" = true;
             "extensions.htmlaboutaddons.recommendations.enabled" = false;
-            "extensions.formautofill.addresses.enabled" = false;
+            "extensions.formautofill.addresses.enabled" = true;
             "extensions.formautofill.creditCards.enabled" = false;
             "general.autoScroll" = false;
             "general.smoothScroll.msdPhysics.enabled" = true;

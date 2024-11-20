@@ -1,6 +1,5 @@
 {
-description = "Hello fellow Straw Hats and Weebs, the best way to navigate the NixOS seas of insanity.
-Probably iisn't on this peice of $*** pirate ship! Loot these dots at your own peril! Yo Ho Ho!";
+description = "Hello fellow Straw Hats and Weebs, I hope you can find some use from these dots. I tried to make things as plug and play as possible and will continue to improve! Yo Ho Ho!";
 
 inputs = {
   # NixPkgs (nixos-24.05)
@@ -18,7 +17,7 @@ inputs = {
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
   # Nix User Repository (master)
-    nur.url = "github:nix-community/NUR";
+  # nur.url = "github:nix-community/NUR";
 
   # Flake Compat
     flake-compat.url = "github:nix-community/flake-compat";
@@ -35,16 +34,16 @@ inputs = {
     nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
 
   # Snowfall Lib - NixOS file/module system lib declaring organized structure for flakes and system management.
-    snowfall-lib.url = "github:snowfallorg/lib";
+    snowfall-lib.url = "github:snowfallorg/lib?ref=v3.0.3";
     snowfall-lib.inputs.nixpkgs.follows = "nixpkgs";
 
   # Snowfall Flake - a convenience wrapper for working with flakes.
     snowfall-flake.url = "github:snowfallorg/flake";
     snowfall-flake.inputs.nixpkgs.follows = "nixpkgs";
 
-  # aagl
+  # An Anime Game Launcher
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
-    aagl.inputs.nixpkgs.follows = "nixpkgs";
+  # aagl.inputs.nixpkgs.follows = "nixpkgs";
 
   # Anyrun launcher
     anyrun.url = "github:anyrun-org/anyrun";
@@ -84,8 +83,8 @@ inputs = {
     deploy-rs.inputs.nixpkgs.follows = "nixpkgs";
 
   # Disko ( Configuration for disk partitioning )
-    disko.url = "github:nix-community/disko";
-    disko.inputs.nixpkgs.follows = "nixpkgs";
+  #  disko.url = "github:nix-community/disko";
+  #  disko.inputs.nixpkgs.follows = "nixpkgs";
 
   # Hyprland
     hyprland = {
@@ -98,18 +97,12 @@ inputs = {
 
   # Hyprpanel (AGS condiguration)
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
-  
+
   # Hyprland plugins
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-
-  # Hyprland socket watcher
-  #  hypr-socket-watch = {
-  #    url = "github:khaneliman/hypr-socket-watch";
-  #    inputs.nixpkgs.follows = "nixpkgs";
-  #  };
 
   # Jerry - Dem Anime's tho...
     jerry.url = "github:justchokingaround/jerry";
@@ -118,7 +111,7 @@ inputs = {
   # Lobster - Dem movies tho shhhh....
     lobster.url = "github:justchokingaround/lobster";
     lobster.inputs.nixpkgs.follows = "nixpkgs";
-    
+
   # Lanzaboote - Secure boot(TPM2)
   #  lanzaboote = {
   #    url = "github:nix-community/lanzaboote/v0.3.0";
@@ -150,21 +143,13 @@ inputs = {
   #  nixos-grub-themes.inputs.nixpkgs.follows = "nixpkgs";
 
   # NVF nixvim fork by notashelf
-    # obsidian-nvim.url = "github:epwalsh/obsidian.nvim";
     nvf = {
       url = "github:notashelf/nvf";
-      # you can override input nixpkgs
       inputs.nixpkgs.follows = "nixpkgs";
-      # you can also override individual plugins
-      # for example:
-      # inputs.obsidian-nvim.follows = "obsidian-nvim"; # <- this will use the obsidian-nvim from your inputs
-    };
+      };
 
   # Neovim Nixvim configuration by redyf
-    neve.url = "github:redyf/neve";
-
-  # Nuenv
-  # nuenv.url = "github:DeterminateSystems/nuenv";
+  #  neve.url = "github:redyf/neve";
 
   # Nyaa
     nyaa = {
@@ -179,14 +164,12 @@ inputs = {
     };
 
   # Plasma-Manager
-  #  plasma-manager.url = "github:nix-community/plasma-manager";
-  #  plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
-  #  plasma-manager.inputs.home-manager.follows = "home-manager";
+    plasma-manager.url = "github:nix-community/plasma-manager";
+    plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
+    plasma-manager.inputs.home-manager.follows = "home-manager";
 
   # Pre Commit Hooks
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
-  # Pre-commit-hooks Cachix
-  # pre-commit-hooks-nix.url = "github:cachix/pre-commit-hooks.nix";
 
   # Sops-Nix - Nix encryption & age secret management
     sops-nix = {
@@ -200,9 +183,6 @@ inputs = {
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-  # Base-16 Nix Theme Conversion
-  # nix-colors.url = "github:misterio77/nix-colors";
-
   # Spicetify - Spotify theming and extension's
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
@@ -214,7 +194,6 @@ inputs = {
       url = "github:abenz1267/walker";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
 
   # Waybar - Highly customizable WM status bar/UI
     waybar = {
@@ -232,75 +211,69 @@ inputs = {
   outputs =
     inputs:
     let
-  inherit (inputs) hyprland hyprpanel aagl home-manager nixpkgs;
-      supportedSystems = [ "x86_64-linux" "x86_64-darwin" "aarch64-linux" "aarch64-darwin" ];
+	lib = inputs.snowfall-lib.mkLib {
+  	 inherit inputs;
+	 src = ./.;
 
-      # Helper function to generate an attrset '{ x86_64-linux = f "x86_64-linux"; ... }'.
-      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+   #  supportedSystems = [ "x86_64-linux" "x86_64-darwin" "aarch64-linux" "aarch64-darwin" ];
+    #  Helper function to generate an attrset '{ x86_64-linux = f "x86_64-linux"; ... }'.
+   #  forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+    #  Nixpkgs instantiated for supported system types.
+   #  nixpkgsFor = forAllSystems (system: import nixpkgs { inherit system; });
 
-      # Nixpkgs instantiated for supported system types.
-    nixpkgsFor = forAllSystems (system: import nixpkgs { inherit system; });
-      lib = inputs.snowfall-lib.mkLib {
-        inherit inputs;
-        src = ./.;
-
-        snowfall = {
+       snowfall = {
           namespace = "t0psh31f";
 
           meta = {
             name = "t0psh31f";
-            title = "T0PSH31F's, Snowfall-Lib Structered Nix Flake Config";
+            title = "The Thousand Sunny, Deploying on our quest for One Dots Config!!";
           };
         };
       };
     in
-    lib.mkFlake {
+    lib.mkFlake
+     {
       channels-config = {
         allowUnfree = true;
+       # allowBroken = true;
         allowUnfreePredicate = pkg: true;
         nixpkgs.config.packageOverrides = pkgs: {
-          # integrates nur within Home-Manager
-          nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
-            inherit pkgs;
-            };
 
-              # sha256 = "sha256:1b9ffky4lzwlpq7g9nnyb3zdyq1mz7vd383xd8ji0jyyx3y0vsad";
+        # integrates nur within Home-Manager
+        #  nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
+        #    inherit pkgs;
+        #    };
+        # sha256 = "sha256:1b9ffky4lzwlpq7g9nnyb3zdyq1mz7vd383xd8ji0jyyx3y0vsad";
         };
       };
 
       overlays = with inputs; [
         hyprpanel.overlay
         snowfall-flake.overlays.default
-     #  nuenv.overlays.default
-      ];
-
-      homes.modules = with inputs; [
-        nix-index-database.hmModules.nix-index
         ];
 
       systems.modules.nixos = with inputs; [
         aagl.nixosModules.default
         arion.nixosModules.arion
         catppuccin.nixosModules.catppuccin
-        disko.nixosModules.default
+      # disko.nixosModules.default
       # dedsec-grub-theme.nixosModules.dedsec-grub-theme
-        home-manager.nixosModules.home-manager
+	home-manager.nixosModules.home-manager
         hyprland.nixosModules.default
-        nur.nixosModules.nur
-      # nvf.nixosModules.default
-        vault-service.nixosModules.nixos-vault-service
+	nix-ld.nixosModules.nix-ld
+      # nur.nixosModules.nur
+        nvf.nixosModules.default
         stylix.nixosModules.stylix
+	vault-service.nixosModules.nixos-vault-service
       ];
 
-      systems.modules.home = with inputs; [
+      homes.modules = with inputs; [
         ags.homeManagerModules.default
         anyrun.homeManagerModules.default
         hyprland.homeManagerModules.default
-        jerry.homeManagerModules.default
-        lobster.homeManagerModules.default
-        neve.homeManagerModules.default
-        nvf.homeManagerModules.default
-        nyaa.homeManagerModules.default
+     	nix-index-database.hmModules.nix-index
+      # nvf.homeManagerModules.default
+        nyaa.homeManagerModule
         spicetify-nix.homeManagerModules.default
         walker.homeManagerModules.default
         ];
@@ -309,28 +282,15 @@ inputs = {
 
       templates = import ./templates { };
 
-      devShells = forAllSystems (system:
-        let
-          pkgs = nixpkgsFor.${system};
-        in
-        {
-          default = pkgs.mkShell {
-            buildInputs = with pkgs; [
-              git
-              nh
-              nixpkgs-fmt
-              statix
-            ];
-          };
-        });
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
-    };
-
+      outputs-builder = channels: { formatter = channels.nixpkgs.nixfmt-rfc-style; };
+     # formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+    }
+   // {
+	self = inputs.self;
+	};
+}
     #  checks =
     #    builtins.mapAttrs
     #    (system: deploy-lib:
     #      deploy-lib.deployChecks inputs.self.deploy)
-    #    inputs.deploy-rs.lib;
-
-    }
-
+  #    inputs.deploy-rs.lib;

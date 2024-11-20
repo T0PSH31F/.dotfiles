@@ -46,9 +46,11 @@ in
       })
       cfg.extra-substituters;
 
-    nixpkgs.config.permittedInsecurePackages = [
+    nixpkgs.config = {
+      permittedInsecurePackages = [
           openssl-1.1.1w
               ];
+         };
 
     environment.systemPackages = with pkgs; [
       t0psh31f.nixos-revision

@@ -70,7 +70,7 @@ in
 
   config = {
     environment.systemPackages = with pkgs; [
-      cava
+     #  cava
       cbonsai
       cmatrix
       fd
@@ -109,8 +109,8 @@ in
       };
     };
 
-    programs.zsh.enable = true;
-
+    programs.zsh = enabled;
+    
     users.users.${cfg.name} = {
       isNormalUser = true;
 

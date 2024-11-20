@@ -18,7 +18,6 @@ in
       arduinoOTA
       arduino-ide
       bluez
-      bluez-alsa
       bluez-tools
       bluetuith
       bottom # sys monitor
@@ -29,20 +28,19 @@ in
       exportarr
       fd
       fuzzel
+      fzf
       gedit
       glib
       gnome-disk-utility
-      gnome-bluetooth
-      gobject-introspection
-      grimblast
-      gpu-screen-recorder
+      gnome-software
+      gotop
+      gtop
       htop
       hyprpanel
       inputs.lobster.packages."x86_64-linux".lobster
       kate
       libnotify
       legcord
-      libgtop
       newsboat
       nmon
       matugen
@@ -57,14 +55,13 @@ in
       tor
       tor-browser
       typescript
-      patch
       powertop
       pywal
       python3
       python312Packages.finvizfinance
       vimPlugins.avante-nvim
       vivaldi
-      usermount
+  #    usermount
       wallust
       wpgtk
     ];
@@ -72,31 +69,21 @@ in
 programs.partition-manager.enable = true;
 networking.networkmanager.enable = true;
 
-hardware = {
-  bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-    package = pkgs.bluez;
-  };
-};
-
 services = {
   blueman.enable = true;
-  devmon.enable = true;
-  gvfs.enable = true;
-  udisks2.enable = true;
+# devmon.enable = true;
+# udisks2.enable = true;
 };
 
     t0psh31f = {
-      nix = enabled;
-
       programs = {
-          terminal = {
+        terminal = {
           tools = {
             nh = enabled;
             bandwhich = enabled;
             flake = enabled;
             nix-ld = enabled;
+            ollama = enabled;
           };
         };
       };
@@ -110,14 +97,13 @@ services = {
       security = {
         doas = disabled;
         gpg = disabled;
-        keyring.enable = config.${namespace}.desktop.gnome.enable;
-        yubikey = enabled;
-      };
+      # keyring.enable = config.${namespace}.desktop.gnome.enable;
+         };
 
       services = {
         avahi = enabled;
         openssh = enabled;
-        printing = enabled;
+        printing = disabled;
         remote-desktop = disabled;
         tailscale = disabled;
       };

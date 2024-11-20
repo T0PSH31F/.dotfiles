@@ -12,33 +12,21 @@ in
   };
 
   config = mkIf cfg.enable {
-    programs = {
-    usbtop.enable = true;
-    adb.enable = true;
-    };
 
-  # greetd display manager
-    services.greetd = let
-      session = {
-        command = "${lib.getExe config.programs.hyprland.package}";
-        user = "t0psh31f";
-      };
-  in {
+  # SDDM - Display Manager
+  services.displayManager.sddm = {
     enable = true;
-    settings = {
-      terminal.vt = 1;
-      default_session = session;
-      initial_session = session;
+    wayland.enable = true;
+    enableHidpi = true;
+  #  theme = "chili";
+  #  package = pkgs.sddm;
     };
-  };
 
-  # unlock GPG keyring on login
-  security.pam.services.greetd.enableGnomeKeyring = true;
+  services.desktopManager.plasma6.enable = true;
 
   environment.systemPackages = with pkgs; [
       inputs.walker.packages.${pkgs.system}.default
       filelight
-      gparted
     ];
 
       qt = {
@@ -49,18 +37,22 @@ in
 
     t0psh31f = {
       desktop = {
+		stylix = enabled;
+
         addons = {
           electron-support = enabled;
-        # gtk-qt = enabled;
+          gtk-qt = enabled;
           nautilus = enabled;
           keyring = enabled;
           term = enabled;
           xdg-portal = enabled;
         };
-      #  gnome = enabled;
-        hyprland = enabled;
-        stylix = enabled;
-      #  wayfire = enabled;
+
+        des = {
+    	   #  gnome = enabled;
+     	   hyprland = enabled;
+   	 #  wayfire = enabled;
+         };
       };
     };
   };

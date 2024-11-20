@@ -30,11 +30,11 @@ in
 
       graphical = {
         apps = {
-              anyrun = enabled;
+             anyrun = enabled;
               jerry = enabled;
-                nyaa = enabled;
+               nyaa = enabled;
                 obs = enabled;
-              walker = enabled;
+             walker = enabled;
                 };
         browsers = {
             brave = enabled;

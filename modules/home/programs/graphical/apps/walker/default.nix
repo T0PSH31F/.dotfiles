@@ -7,8 +7,6 @@ let
   cfg = config.${namespace}.programs.graphical.apps.walker;
 in
 {
-  imports = [inputs.walker.homeManagerModules.default];
-
   options.${namespace}.programs.graphical.apps.walker = {
     enable = mkBoolOpt false "Whether or not to enable walker";
   };

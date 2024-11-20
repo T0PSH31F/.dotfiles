@@ -11,17 +11,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    programs.nix-ld = {
-      enable = true;
-      package = pkgs.nix-ld-rs;
-
-      libraries = with pkgs; [
-        gcc
-        icu
-        libcxx
-        stdenv.cc.cc.lib
-        zlib
-      ];
-    };
-  };
-}
+    programs.nix-ld.dev.enable = true;
+         };
+  }

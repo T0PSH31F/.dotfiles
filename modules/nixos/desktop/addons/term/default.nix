@@ -17,7 +17,7 @@ in
     pkgs.rio
     pkgs.socat
     pkgs.ueberzugpp
-    pkgs.warp-terminal
+  #  pkgs.warp-terminal
     pkgs.wezterm
 
     ]; };

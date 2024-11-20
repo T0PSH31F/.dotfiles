@@ -43,6 +43,8 @@ in
     ];
 
     environment.systemPackages = with pkgs; [
+      quickemu
+      quickgui # These two should be all that's needed.. This is a reminder to clear rest if true.
       virt-manager
       virtio-win
       spice
@@ -82,7 +84,7 @@ in
     t0psh31f  = {
       user = { extraGroups = [ "qemu-libvirtd" "libvirtd" "disk" ]; };
 
-    # apps = { looking-glass-client = enabled; };
+      apps = { looking-glass-client = enabled; };
 
       home = {
         extraOptions = {

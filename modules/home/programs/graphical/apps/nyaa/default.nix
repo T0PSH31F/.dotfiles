@@ -7,9 +7,7 @@ let
   cfg = config.${namespace}.programs.graphical.apps.nyaa;
 in
 {
-  imports = [inputs.nyaa.homeManagerModule];
-
-  options.${namespace}.programs.graphical.apps.nyaa = {
+   options.${namespace}.programs.graphical.apps.nyaa = {
     enable = mkBoolOpt false "Whether or not to enable nyaa";
   };
 

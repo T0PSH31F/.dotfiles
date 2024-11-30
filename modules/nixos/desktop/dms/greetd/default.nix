@@ -1,4 +1,4 @@
-
+{
 
 
   # greetd display manager
@@ -18,3 +18,4 @@
 
   # unlock GPG keyring on login
   # security.pam.services.greetd.enableGnomeKeyring = true;
+}

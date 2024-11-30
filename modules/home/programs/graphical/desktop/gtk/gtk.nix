@@ -16,7 +16,7 @@ in
   config = mkIf cfg.enable {
   home.pointerCursor = {
     package = pkgs.afterglow-cursors-recolored;
-    name = "Darcula-Green";
+    name = "dracula-teddy";
     size = 36;
     gtk.enable = true;
     x11.enable = true;
@@ -28,8 +28,8 @@ in
     gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
 
     iconTheme = {
-      name = "Adwaita";
-      package = pkgs.adwaita-icon-theme;
+      name = "gruvbox-plus-icons";
+      package = pkgs.gruvbox-plus-icons;
     };
 
     theme = {

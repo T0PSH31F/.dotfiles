@@ -16,15 +16,15 @@ with lib.${namespace};
     apps = { qbittorrent = enabled; };
 
     desktop = {
-	des = {
-    	  hyprland = enabled;
+	      des = {
+      hyprland = enabled;
   	  #  gnome = enabled;
-	  #  plasma = enabled;
-     	  wayfire = enabled;
+	  #  plasma6 = enabled;
+       wayfire = enabled;
    	    };
   	  };
 
-    hardware = { fingerprint = enabled; };
+    hardware = {};
 
 #   security = { gpg = mkForce disabled; };
 

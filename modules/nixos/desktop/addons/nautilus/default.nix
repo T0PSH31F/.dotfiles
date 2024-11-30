@@ -20,17 +20,21 @@ in
       "iptables -t raw -A OUTPUT -p udp -m udp --dport 137 -j CT --helper netbios-ns";
 
     environment.systemPackages = with pkgs; [
+      folder-color-switcher
+      hifile
+      ifm-web
       nautilus
       mate.caja-with-extensions
       nemo-with-extensions
       nemo-fileroller
       nemo-emblems
-      folder-color-switcher
+      pcmanfm
+      spaceFM
+      superfile
       xfce.thunar
       xfce.thunar-volman
       xfce.thunar-archive-plugin
-      ifm-web
-      pcmanfm
+      xplorer
       ];
   };
 }

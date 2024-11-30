@@ -51,7 +51,7 @@ in
         des = {
     	   #  gnome = enabled;
      	   hyprland = enabled;
-   	 #  wayfire = enabled;
+   	     #  wayfire = enabled;
          };
       };
     };
